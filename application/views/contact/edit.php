@@ -123,7 +123,7 @@
 
                     <head id="collectSection" style="display:none; " class="row custom-row">
                         <header class="container py-3 d-flex justify-content-between align-items-center ">
-                            <h2 style="    font-weight: 500;">Contacts <span class="minibadge ">12</span></h2>
+                            <h2 style="    font-weight: 500;">Edit Contact <?php echo $id ?> <span class="minibadge ">12</span></h2>
                             <div class="d-flex ">
                                 <div class="d-flex text-aligh-center">
                                     <!-- <i class="fa fa-search" aria-hidden="true"></i> -->

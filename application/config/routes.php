@@ -43,5 +43,7 @@ $route['404_override'] = 'home/error_404';
 $route['webhook_url'] = 'home/webhook_url';
 $route['social_accounts/inbox'] = 'social_accounts/inbox';
 $route['test'] = 'home/test';
+$route['contacts'] = 'contacts';
+// $route['contacts/create'] = 'contacts';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
