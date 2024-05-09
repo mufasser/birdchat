@@ -300,13 +300,9 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
-
-                                            <label for="name"> <?php echo $this->lang->line("Subscriber")?> </label>
-
-                                            <input name="name" value="<?php echo set_value('subscriber');?>"  class="form-control" type="text">
-
-                                            <span class="red"><?php echo form_error('subscriber'); ?></span>
-
+                                                <label for="name"> <?php echo $this->lang->line("Subscriber")?> </label>
+                                                <input name="name" value="<?php echo set_value('subscriber');?>"  class="form-control" type="text">
+                                                <span class="red"><?php echo form_error('subscriber'); ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -314,22 +310,16 @@
 
                                     <header class="container py-3 d-flex justify-content-between align-items-center ">
                                         <h2 style="    font-weight: 500;">Add to list </h2>
-                                        
                                     </header>
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
-
-                                            <label for="name"> <?php echo $this->lang->line("Subscriber")?> </label>
-
-                                            <input name="name" value="<?php echo set_value('subscriber');?>"  class="form-control" type="text">
-
-                                            <span class="red"><?php echo form_error('subscriber'); ?></span>
-
+                                            <label for="name"> <?php echo $this->lang->line("Lists")?> </label>
+                                            <input name="name" value="<?php echo set_value('lists');?>"  class="form-control" type="text">
+                                            <span class="red"><?php echo form_error('lists'); ?></span>
                                             </div>
                                         </div>
                                     </div>
-                                    
                                 </div>
 
 

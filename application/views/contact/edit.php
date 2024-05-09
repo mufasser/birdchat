@@ -111,8 +111,7 @@
                             <li class="nav-item "><a class="nav-link" href="#"
                                     onclick="loadContent('collect')">All
                                     Contacts</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#" onclick="loadContent('connect')">My
-                                    Contacts</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" onclick="loadContent('connect')">Create</a></li>
 
                         </ul>
                     </nav>
@@ -120,129 +119,243 @@
                 </header>
 
                 <main id="mainContent" class="container py-4 " style="margin-right: 550px; margin-top: -27px; ">
-
                     <head id="collectSection" style="display:none; " class="row custom-row">
                         <header class="container py-3 d-flex justify-content-between align-items-center ">
-                            <h2 style="    font-weight: 500;">Edit Contact <?php echo $id ?> <span class="minibadge ">12</span></h2>
-                            <div class="d-flex ">
-                                <div class="d-flex text-aligh-center">
-                                    <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
-
-                                    <input type="text" class="form-control   "style=" font-family: Inter;" placeholder="Search">
-                                </div>
-
-                                <div class="d-flex  ">
-                                    <button type="button"
-                                        style="margin-left:15px ;background-color: #FFFFFF; border: 2px solid var(--Border-Base-subtle, #E5E7EB) ;width: 40px; border-radius: 10px;  "
-                                        class=""><i class="fa fa-filter" style="color : black"></i></button>
-                                    <button type="button"
-                                        style="margin-left:9px ;background-color: #FFFFFF; border: 2px solid var(--Border-Base-subtle, #E5E7EB) ;width: 40px; border-radius: 10px;  "
-                                        class=""><i class="fa fa fa-pencil-square-o"
-                                            style="color : black"></i></button>
-                                        <?= anchor('contacts/create', '<i class="fa fa-plus" style="color: black"></i>', ['class' => 'btn btn-light']); ?>
-
-                                    
-
-
-                                </div>
-                            </div>
+                            <h2 style="    font-weight: 500;">Edit Contact </h2>
                         </header>
 
                         <main class="container  " style="    border: 1px solid #ccc;border-radius: 17px; padding: 0;">
+                        <form class="form-horizontal" action="<?php echo site_url().'admin/add_user_action';?>" method="POST">
+                            <input type="hidden" name="csrf_token" id="csrf_token" value="<?php echo $this->session->userdata('csrf_token_session'); ?>">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="name"> <?php echo $this->lang->line("First Name")?> </label>
+                                                <input name="name" value="<?php echo set_value('first_name');?>"  class="form-control" type="text">
+                                                <span class="red"><?php echo form_error('first_name'); ?></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
 
-                            <div class="table-responsive">
-                                <table class="table ">
-                                    <thead>
-                                        <tr style="">
-                                            <th scope="col">
-                                                <input type="checkbox" class="form-check-input me-1"
-                                                    style="margin-left: -4px;">
-                                            </th>
-                                            <th scope="col">Names</th>
-                                            <th scope="col">Labels</th>
-                                            <th scope="col">Lists</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Phone Number</th>
-                                            <th scope="col">Company N.</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="">
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" class="form-check-input me-1"
-                                                    style="margin-left: -4px;">
-                                            </td>
-                                            <td>Jane Cooper</td>
-                                            <td><span class="minibadged ">in progress</span></td>
-                                            <td>vip</td>
-                                            <td>tanya.hill@example.com</td>
-                                            <td>(302) 555-0107</td>
-                                            <td>30</td>
-                                        </tr>
-                                        <tr style="">
-                                            <td>
-                                                <input type="checkbox" class="form-check-input me-1"
-                                                    style="margin-left: -4px;">
-                                            </td>
-                                            <td>Robert Fox</td>
-                                            <td><span class="minibadged ">in progress</span></td>
-                                            <td>Vip</td>
-                                            <td>jackson.graham@example.com</td>
-                                            <td>(208) 555-0112</td>
-                                            <td>30</td>
-                                        </tr>
-                                        <tr style="">
-                                            <td>
-                                                <input type="checkbox" class="form-check-input me-1"
-                                                    style="margin-left: -4px;">
-                                            </td>
-                                            <td>Robert Fox</td>
-                                            <td><span class="minibadged ">in progress</span></td>
-                                            <td>Vip</td>
-                                            <td>jackson.graham@example.com</td>
-                                            <td>(208) 555-0112</td>
-                                            <td>30</td>
-                                        </tr>
+                                            <label for="name"> <?php echo $this->lang->line("Last Name")?> </label>
 
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center"
-                                style="border-top: 1px solid #ccc;padding-top: 17px;">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination" style="align-items: center;     padding-left: 18px;">
-                                        <li class="page-item disabled">
-                                            <!-- <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a> -->
-                                            <a href="" style="text-decoration: none;" class="prev-button"><i class="fa fa-angle-left" aria-hidden="true"></i>
-                                                Previous</a>
-                                        </li>
-                                        <div style="margin-left: 13px;" class="">Showing 1-10 of 50 items</div>
-                                    </ul>
-                                </nav>
-                                <div>
-                                    <ul class="pagination">
-                                        <li class="page-item active">
-                                            <a  class="page-link" style="background-color: #3730A3;border-color: #3730A3;" href="#">1</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <input name="name" value="<?php echo set_value('last_name');?>"  class="form-control" type="text">
 
-                                        <li class="page-item disabled" style="padding-right: 16px;">
-                                            <!-- <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a> -->
+                                            <span class="red"><?php echo form_error('last_name'); ?></span>
 
-                                            <a href="" style="text-decoration: none; "
-                                                class="prev-button">Next
-                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                    <div class="row">
+                                        <?php
+
+                                            $labels = [
+                                                'vip' => 'VIP',
+                                                'paid' => 'PAID',
+                                                'issue' => 'ISSUE',
+                                            ]
+                                        ?>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="package_id"> <?php echo $this->lang->line("Package")?> *</label>
+                                                <?php echo form_dropdown('label_id', $labels, '1','class="form-control select2"'); ?>                  
+                                                <span class="red"><?php echo form_error('package_id'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+
+                                            <div class="form-group">
+
+                                            <label for="mobile"><?php echo $this->lang->line("Mobile")?></label>              
+
+                                            <input name="mobile" value="<?php echo set_value('mobile');?>"  class="form-control" type="text">
+
+                                            <span class="red"><?php echo form_error('mobile'); ?></span>               
+
+                                            </div>
+
+                                        </div>  
+
+                                    </div>
+
+
+
+                                    <div class="col-12 col-md-6">
+
+                                        <div class="form-group">
+
+                                            <label for="status" > <?php echo $this->lang->line('Status');?></label><br>
+
+                                            <label class="custom-switch mt-2">
+
+                                            <input type="checkbox" name="status" value="1" class="custom-switch-input" checked>
+
+                                            <span class="custom-switch-indicator"></span>
+
+                                            <span class="custom-switch-description"><?php echo $this->lang->line('Active');?></span>
+
+                                            <span class="red"><?php echo form_error('status'); ?></span>
+
+                                        </label>
+
+                                        </div>
+
+                                    </div>   
+                                    
+                                    <hr>
+
+                                    <header class="container py-3 d-flex justify-content-between align-items-center ">
+                                        <h2 style="    font-weight: 500;">Additional information </h2>
+                                        
+                                    </header>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+
+                                            <label for="name"> <?php echo $this->lang->line("Email")?> </label>
+
+                                            <input name="name" value="<?php echo set_value('email');?>"  class="form-control" type="text">
+
+                                            <span class="red"><?php echo form_error('email'); ?></span>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+
+                                            <label for="name"> <?php echo $this->lang->line("Company Name")?> </label>
+
+                                            <input name="name" value="<?php echo set_value('company_name');?>"  class="form-control" type="text">
+
+                                            <span class="red"><?php echo form_error('company_name'); ?></span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+
+                                            <label for="name"> <?php echo $this->lang->line("Job Title")?> </label>
+
+                                            <input name="name" value="<?php echo set_value('job_title');?>"  class="form-control" type="text">
+
+                                            <span class="red"><?php echo form_error('job_title'); ?></span>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+
+                                            <label for="name"> <?php echo $this->lang->line("Lead Stage")?> </label>
+
+                                            <input name="name" value="<?php echo set_value('lead_stage');?>"  class="form-control" type="text">
+
+                                            <span class="red"><?php echo form_error('lead_stage'); ?></span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+
+                                            <label for="name"> <?php echo $this->lang->line("LEAD SOURCE")?> </label>
+
+                                            <input name="name" value="<?php echo set_value('lead_source');?>"  class="form-control" type="text">
+
+                                            <span class="red"><?php echo form_error('lead_source'); ?></span>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+
+                                            <label for="name"> <?php echo $this->lang->line("Priority")?> </label>
+
+                                            <input name="name" value="<?php echo set_value('Priority');?>"  class="form-control" type="text">
+
+                                            <span class="red"><?php echo form_error('Priority'); ?></span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="name"> <?php echo $this->lang->line("Subscriber")?> </label>
+                                                <input name="name" value="<?php echo set_value('subscriber');?>"  class="form-control" type="text">
+                                                <span class="red"><?php echo form_error('subscriber'); ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <header class="container py-3 d-flex justify-content-between align-items-center ">
+                                        <h2 style="    font-weight: 500;">Add to list </h2>
+                                    </header>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                            <label for="name"> <?php echo $this->lang->line("Lists")?> </label>
+                                            <input name="name" value="<?php echo set_value('lists');?>"  class="form-control" type="text">
+                                            <span class="red"><?php echo form_error('lists'); ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
+
+
+                                <!-- <div class="row" id="hidden">
+
+                                <div class="col-6">
+
+                                    <div class="form-group">
+
+                                    <label for="package_id"> <?php echo $this->lang->line("Package")?> *</label>
+
+                                    <?php echo form_dropdown('package_id', $packages, '1','class="form-control select2"'); ?>                  
+
+                                    <span class="red"><?php echo form_error('package_id'); ?></span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-6">
+
+                                    <?php $expired_date_default = date('Y-m-d H:i:s', strtotime(date("Y-m-d H:i:s"). ' + 7 days'));
+
+                                    ?>
+
+                                    <div class="form-group">
+
+                                    <label for="expired_date"> <?php echo $this->lang->line("Expiry Date")?> *</label>
+
+                                    <input name="expired_date" value="<?php echo (set_value('expired_date')!="") ? set_value('expired_date') : $expired_date_default;?>"  required class="form-control datepicker" type="text">
+
+                                    <span class="red"><?php echo form_error('expired_date'); ?></span>
+                                    </div>
+                                </div>
+                                </div> -->
+                            
+                            
+                                <hr>
+                                <div class="card-footer bg-whitesmoke">
+                                    <button name="submit" type="submit" class="btn btn-primary btn-lg"><i class="fas fa-save"></i> <?php echo $this->lang->line("Save");?></button>
+                                    <button  type="button" class="btn btn-secondary btn-lg float-right" onclick='goBack("admin/user_manager",0)'><i class="fa fa-remove"></i> <?php echo $this->lang->line("Cancel");?></button>
+                                </div>
                             </div>
+
+                        </form>  
                         </main>
-                    </head>
-
-                    <head id="connectSection" style="display:none;">
-
                     </head>
 
                 </main>
