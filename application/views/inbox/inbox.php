@@ -15,7 +15,7 @@
     </script>
 
 
-    <title>contact</title>
+    <title>Inbox</title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.png">
     <?php
     include FCPATH . 'application/views/include/new.php';
@@ -35,6 +35,8 @@
 
         .modal-content {
             animation: slideInRight 0.5s forwards;
+
+
         }
     </style>
     <style>
@@ -250,7 +252,7 @@
             outline: 0;
             height: 100%;
             overflow: hidden;
-            width: 350px;
+            width: 100%;
             float: left;
 
         }
@@ -270,7 +272,7 @@
 
             width: auto;
             overflow: hidden;
-            height: 100%;
+            /* height: 100%; */
             border-left: 1px solid #ccc;
         }
 
@@ -413,7 +415,7 @@
         }
 
         .msg-head {
-            padding: 15px;
+            padding: 16px;
             border-bottom: 1px solid #ccc;
         }
 
@@ -595,12 +597,14 @@
         .send-box {
             padding: 15px;
             border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc
         }
 
         .send-box form {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            /* justify-content: space-between; */
             margin-bottom: 15px;
         }
 
@@ -840,6 +844,93 @@
             border-bottom: 2px solid #2285C6;
             /* Bottom bar color and thickness */
         }
+
+      
+        @media (max-width: 1100px) {
+
+            .row>.col:first-child,
+            .row>.col:last-child {
+                display: none;
+            }
+        }
+
+        .buttonIn {
+            width: 300px;
+            position: relative;
+        }
+
+        .message-send-button {
+            position: absolute;
+            top: 0;
+            border-radius: 5px;
+            right: 0px;
+            z-index: 2;
+            border: none;
+            top: 2px;
+            height: 30px;
+            cursor: pointer;
+            color: white;
+            background-color: #1e90ff;
+            transform: translateX(2px);
+        }
+
+        .message-send-button-icon {
+            position: absolute;
+            top: 0;
+            border-radius: 5px;
+            right: 0px;
+            z-index: 2;
+            border: none;
+            top: 2px;
+           
+            cursor: pointer;
+            color: white;
+         
+            transform: translateX(2px);
+        }
+
+        input {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            outline: none;
+            height: 30px;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #e3e5f5;
+    border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+@media (max-width: 768px) {
+    .message-send-button {
+        margin-right: 10px; /* Adjust as needed */
+    }
+
+    .message-send-button-icon:first-child {
+        margin-right: 10px; /* Adjust as needed */
+    }
+
+    .message-send-button-icon:last-child {
+        margin-right: 20px; /* Adjust as needed */
+    }
+}
+
+
+
     </style>
 
 </head>
@@ -852,355 +943,605 @@
         include FCPATH . 'application/views/admin/theme/sidebar.php';
         echo '<div class="main-content">';
         ?>
-        <!-- chat-area -->
-        <section class="message-area">
-            <div class="">
+        <section>
+            <div class=""style=" margin-top: -92px;">
                 <div class="row">
-                    <div class="col">
-                        <div class="chat-area">
-                            <!-- chatlist -->
-                            <div class="chatlist">
-                                <div class="modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <div class="chat-header">
-                                            <div class="msg-search d-flex">
-                                                <h1 style="font-weight: 500;">Inbox</h1>
-                                                <input type="text" class="form-control" id="inlineFormInputGroup"
-                                                    placeholder="Search" aria-label="search" style="width: 95%;">
-                                            </div>
-                                            <ul style="padding: 2px;" class="nav nav-tabs" id="myTab"
-                                                role="tablist">
-                                                <li class="nav-item custom-tabs" role="presentation">
-                                                    <button style="padding-bottom: 10px; color: #667085;"
-                                                        class="nav-links active" id="Open-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#Open" type="button" role="tab"
-                                                        aria-controls="Open" aria-selected="true">Assigned to
-                                                        me</button>
-                                                </li>
-                                                <li class="nav-item custom-tabs" role="presentation">
-                                                    <button style="padding-bottom: 10px; color: #667085;"
-                                                        class="nav-links" id="Closed-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#Closed" type="button" role="tab"
-                                                        aria-controls="Closed"
-                                                        aria-selected="false">Collaborations</button>
-                                                </li>
-                                                <li class="nav-item custom-tabs" role="presentation">
-                                                    <button style="padding-bottom: 10px; color: #667085;"
-                                                        class="nav-links" id="mention-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#mention" type="button" role="tab"
-                                                        aria-controls="mention" aria-selected="false">Mentions</button>
-                                                </li>
-                                            </ul>
+                    <!-- imbox -->
+                    <div class="col "style="height: 100vh;padding: 0px;margin-left: 9px;">
+                        <div class="chatlist">
+                            <div class="modal-dialog-scrollable">
+                                <div class="modal-content" style="height: 100vh;">
+                                    <div class="chat-header">
+                                        <div class="msg-search d-flex">
+                                            <h1 style="font-weight: 500;">Inbox</h1>
+                                            <input type="text" class="form-control" id="inlineFormInputGroup"
+                                                placeholder="Search" aria-label="search" style="width: 95%;">
                                         </div>
-                                        <div class="modal-body">
-                                            <!-- chat-list -->
-                                            <div class="chat-lists">
-                                                <div class="tab-content" id="myTabContent">
-                                                    <div class="tab-pane fade show active" id="Open"
-                                                        role="tabpanel" aria-labelledby="Open-tab">
-                                                        <!-- chat-list -->
-                                                        <div class="chat-list">
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="<?php echo base_url('assets/images/img/Avatar.png'); ?>" class="img-fluid">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
- 							<?php 
-                                                    $query = $this->db->query("SELECT recipient FROM whatsapp_messages LIMIT 1");
-                                                    $result = $query->row_array();
+                                        <ul style="padding: 2px;justify-content: space-evenly;" class="nav nav-tabs"
+                                            id="myTab" role="tablist">
+                                            <li class="nav-item custom-tabs" role="presentation">
+                                                <button style="padding-bottom: 10px; color: #667085;"
+                                                    class="nav-links active" id="Open-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#Open" type="button" role="tab"
+                                                    aria-controls="Open" aria-selected="true">Assigned to
+                                                    me</button>
+                                            </li>
+                                            <li class="nav-item custom-tabs" role="presentation">
+                                                <button style="padding-bottom: 10px; color: #667085;" class="nav-links"
+                                                    id="Closed-tab" data-bs-toggle="tab" data-bs-target="#Closed"
+                                                    type="button" role="tab" aria-controls="Closed"
+                                                    aria-selected="false">Collaborations</button>
+                                            </li>
+                                            <li class="nav-item custom-tabs" role="presentation">
+                                                <button style="padding-bottom: 10px; color: #667085;" class="nav-links"
+                                                    id="mention-tab" data-bs-toggle="tab" data-bs-target="#mention"
+                                                    type="button" role="tab" aria-controls="mention"
+                                                    aria-selected="false">Mentions</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- chat-list -->
 
-                                                    $columnData = $result['recipient'];
-                                                    ?>
-                                                      <h3 style="font-size: 14px !important;"><?php echo $columnData; ?></h3>
-                                                                   
-							<?php 
-                                                          $query = $this->db->query("SELECT timestamp FROM whatsapp_messages ORDER BY timestamp DESC LIMIT 1");
-                                                           $result = $query->row_array();
-	 $timestamp = strtotime($result['timestamp']);
-    $current_time = time();
-$difference = $current_time - $timestamp;
-$minutes = floor($difference / 60);
-                             
-								?>
-<p style="font-size: 12px !important;color: #475467 !important;"><?php echo $minutes; ?>min ago</p>
-                                                                       <!-- <p
-                                                                        style="font-size: 12px !important;color: #475467 !important;">
-                                                                        5min ago</p> -->
+                                        <div class="chat-lists">
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="Open" role="tabpanel"
+                                                    aria-labelledby="Open-tab">
 
-                                                                </div>
-                                                            </a>
+													<div class="chat-list">
+                                                        <a href="#" class="d-flex align-items-center">
+                                                            <div class="flex-shrink-0">
+                                                                <img src="<?php echo base_url('assets/images/img/Avatar.png'); ?>" class="img-fluid">
+                                                            </div>
+                                                            <div class="flex-grow-1 ms-3">
+                                                                <?php
+                                                                $query = $this->db->query("SELECT recipient FROM whatsapp_messages LIMIT 1");
+                                                                $result = $query->row_array();
 
-                                                            <?php 
-                                                            
-$query = $this->db->query("SELECT message_body FROM whatsapp_messages WHERE message_body IS NOT NULL ORDER BY timestamp DESC");
-                                                            $result = $query->row_array();
+                                                                // Check if $result['recipient'] exists and is not null
+                                                                $columnData = isset($result['recipient']) ? $result['recipient'] : null;
+                                                                ?>
+                                                                <h3 style="font-size: 14px !important;"><?php echo $columnData; ?></h3>
 
-                                                            $columnData = $result['message_body'];
-                                                            ?>
+                                                                <?php
+                                                                $query = $this->db->query("SELECT timestamp FROM whatsapp_messages ORDER BY timestamp DESC LIMIT 1");
+                                                                $result = $query->row_array();
+
+                                                                // Check if $result['timestamp'] exists and is not null
+
+
+                                                                if (isset($result['timestamp'])) {
+                                                                    $timestamp = strtotime($result['timestamp']);
+                                                                    $current_time = time();
+                                                                    $difference = $current_time - $timestamp;
+
+                                                                    // After 60 seconds, display the number of minutes
+                                                                    if ($difference >= 60) {
+                                                                        $minutes = floor($difference / 60);
+                                                                        if ($minutes >= 60) {
+                                                                            // After 60 minutes, display the number of hours
+                                                                            $hours = floor($minutes / 60);
+                                                                            echo "<p style=\"font-size: 12px !important;color: #475467 !important;\">";
+                                                                            echo isset($hours) ? $hours . ' hours ago' : '';
+                                                                            echo "</p>";
+                                                                        } else {
+                                                                            echo "<p style=\"font-size: 12px !important;color: #475467 !important;\">";
+                                                                            echo isset($minutes) ? $minutes . ' minutes ago' : '';
+                                                                            echo "</p>";
+                                                                        }
+                                                                    } else {
+                                                                        $minutes = null;
+                                                                    }
+                                                                }
+                                                                ?>
+
+
+
+
+                                                            </div>
+                                                        </a>
+                                                        <?php
+                                                        $query = $this->db->query("SELECT message_body FROM whatsapp_messages WHERE message_body IS NOT NULL ORDER BY timestamp DESC");
+                                                        $result = $query->row_array();
+                                                        $columnData = $result['message_body'] ?? null;
+                                                        ?>
                                                         <p style="color: #475467 !important;"><?php echo $columnData; ?></p>
-                                                            <!-- <p style="color: #475467 !important;">
-                                                            Hey Olivia, Katherine
-                                                                sent me over the latest doc. I just have a quick
-                                                                question about the...</p> -->
+                                                    </div>
 
-                                                        </div>
-                                                        <!-- chat-list -->
-                                                    </div>
-                                                    <div class="tab-pane fade" id="Closed" role="tabpanel"
-                                                        aria-labelledby="Closed-tab">
-                                                        <!-- chat-list -->
-                                                        <div class="chat-list">
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="<?php echo base_url('assets/images/img/Avatar4.png'); ?>" class="img-fluid">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3 style="font-size: 14px !important;">Cameron
-                                                                        Williamson</h3>
-                                                                    <p
-                                                                        style="font-size: 12px !important;color: #475467 !important;">
-                                                                        5min ago</p>
-                                                                </div>
-                                                            </a>
-                                                            <p style="color: #475467 !important;">Hey Olivia, Katherine
-                                                                sent me over the latest doc. I just have a quick
-                                                                question about the...</p>
-                                                        </div>
-                                                        <!-- chat-list -->
-                                                    </div>
-                                                    <div class="tab-pane fade" id="mention" role="tabpanel"
-                                                        aria-labelledby="Closed-tab">
-                                                        <!-- chat-list -->
-                                                        <div class="chat-list">
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="<?php echo base_url('assets/images/img/Avatar2.png'); ?>" class="img-fluid">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3 style="font-size: 14px !important;">Cameron
-                                                                        Williamson</h3>
-                                                                    <p
-                                                                        style="font-size: 12px !important;color: #475467 !important; ;">
-                                                                        5min ago</p>
-                                                                </div>
-                                                            </a>
-                                                            <p style="color: #475467 !important; margin-bottom: 45px;">
-                                                                Hey Olivia, Katherine sent me over the latest doc. I
-                                                                just have a quick question about the...</p>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="<?php echo base_url('assets/images/img/Avatar3.png'); ?>" class="img-fluid">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3 style="font-size: 14px !important;">Cameron
-                                                                        Williamson</h3>
-                                                                    <p
-                                                                        style="font-size: 12px !important;color: #475467 !important; ">
-                                                                        5min ago</p>
-                                                                </div>
-                                                            </a>
-                                                            <p style="color: #475467 !important; margin-bottom: 45px;">
-                                                                Hey Olivia, Katherine sent me over the latest doc. I
-                                                                just have a quick question about the...</p>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="<?php echo base_url('assets/images/img/Avatar4.png'); ?>" class="img-fluid">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3 style="font-size: 14px !important;">Cameron
-                                                                        Williamson</h3>
-                                                                    <p
-                                                                        style="font-size: 12px !important;color: #475467 !important;">
-                                                                        5min ago</p>
-                                                                </div>
-                                                            </a>
-                                                            <p style="color: #475467 !important;margin-bottom: 45px;">
-                                                                Hey Olivia, Katherine sent me over the latest doc. I
-                                                                just have a quick question about the...</p>
-                                                        </div>
-                                                        <!-- chat-list -->
-                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="Closed" role="tabpanel"
+                                                    aria-labelledby="Closed-tab">
+
+                                                </div>
+                                                <div class="tab-pane fade" id="mention" role="tabpanel"
+                                                    aria-labelledby="Closed-tab">
+
                                                 </div>
                                             </div>
-                                            <!-- chat-list -->
                                         </div>
+                                        <!-- chat-list -->
                                     </div>
                                 </div>
                             </div>
-                            <!-- chatlist -->
-                            <!-- chatbox -->
-                            <div class="chatbox">
-                                <div class="modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <div class="msg-head">
-                                            <div class="row">
-                                                <div class="d-flex"
-                                                    style="flex-direction: row;justify-content: space-between;">
-                                                    <div class="container2" style=" padding-left: 43px;">
-							 <?php 
+                        </div>
+                    </div>
+                    <!-- chatbox -->
+                    <div class="col-6 "style="padding: 0px;height: 100vh;">
+					<div class="chatbox">
+                            <div class="modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="msg-head">
+                                        <div class="row">
+                                            <div class="d-flex" style="flex-direction: row;justify-content: space-between;">
+                                                <div class="container2" style=" padding-left: 43px;">
+                                                    <?php
                                                     $query = $this->db->query("SELECT recipient FROM whatsapp_messages LIMIT 1");
                                                     $result = $query->row_array();
 
-                                                    $columnData = $result['recipient'];
+                                                    // Check if $result['recipient'] exists and is not null
+                                                    $columnData = isset($result['recipient']) ? $result['recipient'] : null;
                                                     ?>
-                                                      <h1><?php echo $columnData; ?></h1>
-                                                        
-                                                        <div style="margin-top: 18px">
-                                                            <label for="assignedTo">Assigned to:</label>
-                                                            <select name="assignedTo" id="assignedTo"
-                                                                style="border: none;">
-                                                                <option value="you">you</option>
-                                                                <!-- Add more options as needed -->
-                                                            </select>
-                                                        </div>
+                                                    <h1><?php echo $columnData; ?></h1>
+
+                                                    <div style="margin-top: 18px">
+                                                        <label for="assignedTo">Assigned to:</label>
+                                                        <select name="assignedTo" id="assignedTo" style="border: none;">
+                                                            <option value="you">you</option>
+                                                            <!-- Add more options as needed -->
+                                                        </select>
                                                     </div>
-                                                    <div class="container1" style=" padding-right: 161px;">
-                                                        <div>
-                                                            <ul style="display: flex;">
-                                                                <li style="margin-left:17px">
-                                                                    <svg style="height: 22px;"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        fill="none" viewBox="0 0 24 24"
-                                                                        stroke-width="1.5" stroke="currentColor"
-                                                                        class="w-6 h-6">
-                                                                        <path stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
-                                                                    </svg>
-                                                                </li>
-                                                                <li style="margin-left:17px">
-                                                                    <svg style="height: 22px;"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        fill="none" viewBox="0 0 24 24"
-                                                                        stroke-width="1.5" stroke="currentColor"
-                                                                        class="w-6 h-6">
-                                                                        <path stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
-                                                                    </svg>
-                                                                </li>
-                                                                <button id="three-dots"
-                                                                    style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;"
-                                                                    type="button" class="btn"
-                                                                    data-bs-toggle="modal" data-bs-target="#myModal">
-                                                                    <svg style="height: 22px;"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        fill="none" viewBox="0 0 24 24"
-                                                                        stroke-width="1.5" stroke="currentColor"
-                                                                        class="w-6 h-6">
-                                                                        <path stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
-                                                                    </svg>
-                                                                </button>
+                                                </div>
+                                                <div class="container1" style=" padding-right: 0px;">
+                                                    <div>
+                                                        <ul style="display: flex;">
+                                                            <li style="margin-left:17px">
+                                                                <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                                                                </svg>
+                                                            </li>
+                                                            <li style="margin-left:17px">
+                                                                <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                                                </svg>
+                                                            </li>
+                                                            <button id="three-dots" style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                                                <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                                                                </svg>
+                                                            </button>
 
-                                                                <div id="myModal" class="modal" tabindex="-1"
-                                                                    data-bs-backdrop="false">
-                                                                    <div class="modal-dialog modal-dialog-centered" style="height: 100vh;  width: 300px;margin-left: auto;">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title">Phoenix Baker</h5>
-                                                                                <button type="button"
-                                                                                    class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form action="<?php echo base_url('home/threedialog_register'); ?>"
-                                                                                    method="post">
-                                                                                    <div class="mb-3">
-                                                                                        
-                                                                                    </div>
-                                                                                    
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </ul>
-                                                        </div>
-                                                        <div style="margin-top: 35px">
-                                                            <label for="assignedTo">Filter by:</label>
-                                                            <select name="assignedTo" id="assignedTo"
-                                                                style="border: none;">
-                                                                <option value="you">All channels</option>
-                                                                <!-- Add more options as needed -->
-                                                            </select>
-                                                        </div>
+                                                        </ul>
+                                                    </div>
+                                                    <div style="margin-top: 35px">
+                                                        <label for="assignedTo">Filter by:</label>
+                                                        <select name="assignedTo" id="assignedTo" style="border: none;">
+                                                            <option value="you">All channels</option>
+                                                            <!-- Add more options as needed -->
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="msg-body">
-                                                <!-- Your message body content -->
-                                                <?php if (!empty($messages)) : ?>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="msg-body">
+                                            <!-- Your message body content -->
+                                            <?php if (!empty($messages)) : ?>
                                                 <ul>
                                                     <?php foreach ($messages->result() as $message) : ?>
-                                                    <?php if (!empty($message->message_body)) : ?>
-                                                    <?php if (is_null($message->entry_id)) : ?>
-                                                    <li class="repaly">
-                                                        <p>
-                                                            <?php echo $message->message_body; ?>
-                                                        </p>
-                                                        <!-- <span class="time">10:20 am</span> -->
-                                                    </li>
-                                                    <?php else : ?>
-                                                    <?php if (!is_null($message->entry_id)) : ?>
-                                                    <li class="sender">
-                                                        <p>
-                                                            <?php echo $message->message_body; ?>
-                                                        </p>
-                                                        <!-- <span class="time">10:26 am</span> -->
-                                                    </li>
+                                                        <?php if (!empty($message->message_body)) : ?>
+                                                            <?php if (is_null($message->entry_id)) : ?>
+                                                                <li class="repaly">
+                                                                    <p>
+                                                                        <?php echo $message->message_body; ?>
+                                                                    </p>
+                                                                    <!-- <span class="time">10:20 am</span> -->
+                                                                </li>
+                                                            <?php else : ?>
+                                                                <?php if (!is_null($message->entry_id)) : ?>
+                                                                    <li class="sender">
+                                                                        <p>
+                                                                            <?php echo $message->message_body; ?>
+                                                                        </p>
+                                                                        <!-- <span class="time">10:26 am</span> -->
+                                                                    </li>
 
-                                                    <?php endif; ?>
-                                                    <?php endif; ?>
-                                                    <?php endif; ?>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        <?php endif; ?>
                                                     <?php endforeach; ?>
 
 
                                                 </ul>
 
-                                               
-                                                <?php endif; ?>
- <li id="message-list" class="sender">
 
-                                                </li>
+                                            <?php endif; ?>
+                                        </div>
+                                        <li id="message-list" class="sender">
+
+                                        </li>
+                                    </div>
+                                    <div class="send-box">
+                                        <!-- Your send message box content -->
+                                        <form action="<?php echo base_url('home/send_messages'); ?>" method="post">
+                                            <div class="buttonIn"style="   width: 100%;">
+                                                <input type="text" id="enter" class="form-control"
+                                                    placeholder="Write message…"
+                                                    style="width: 100%;height: 100px;padding-bottom: 36px;" required>
+                                                <button class="message-send-button" id="clear"
+                                                    style="margin-top:64px;margin-right:19px">send</button>
+                                                <a class="message-send-button-icon" id="clear"
+                                                    style="margin-top: 64px; margin-right: 216px;">
+                                                    
+                                                    <svg style="   height: 20px;" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
+                                                    </svg>
+
+                                                </a>
+                                                <a class="message-send-button-icon" id="clear"
+                                                    style="margin-top: 64px; margin-right: 244px;">
+
+                                                    <svg style="   height: 20px;" xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                        stroke="currentColor" class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                                                    </svg>
+
+                                                </a>
                                             </div>
-                                        </div>
-                                        <div class="send-box">
-                                            <!-- Your send message box content -->
-                                            <form action="<?php echo base_url('home/send_messages'); ?>" method="post">
-                                                <input type="text" id="message" name="message"
-                                                    class="form-control" aria-label="message"
-                                                    placeholder="Write message…" style="height: 89px; width:100%;"
-                                                    required>
-                                                <button
-                                                    style="margin-left: -282px; width: 109px; margin-right: 203px; margin-top: 41px;"
-                                                    type="submit"><i class="fa fa-paper-plane"
-                                                        aria-hidden="true"></i> Send</button>
-                                            </form>
-                                        </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- discripation -->
+                    <div class="col overflow-auto" style="max-height: 892px; height: 943px;     margin-top: -35px;" >
+                        <div class="modal-dialog"
+                            style=" height: max-content;margin-left: auto;background-color: none !important; margin: 0px;">
+                            <div class="modal-content" style="background: #ffffff">
+                                <div class="modal-header">
+                                   
+                            
+                                </div>
+                                <div class="header"
+                                    style=" display: flex;  justify-content: center; flex-direction: column; align-items: center;border-bottom: 1px solid #ccc;">
+                                    <div class="profil">
+                                        <img src="<?php echo base_url('assets/images/img/Avatardialogbox.png'); ?>" style="height: 57px; width: 57px" />
+                                    </div>
+                                    <h5 class="modal-title"
+                                        style="margin-top: 14px; font-weight: 700; padding-bottom: 29px">
+                                        Phoenix Baker
+                                    </h5>
+                                </div>
+                                <div class="contact-section" style="border-bottom: 1px solid #ccc">
+                                    <ul
+                                        style="     display: flex;    justify-content: center;   justify-content: space-evenly;       padding-top: 15px;">
+
+                                        <button
+                                            style="   text-align: center;  border: none;    background: none;   margin-top: 0px; margin-left: 17px;"
+                                            type="button" class="btn" data-bs-toggle="modal"
+                                            data-bs-target="#myModal">
+                                            <svg style="height: 22px" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                                            </svg>
+                                        </button>
+                                        <!-- firstbutton -->
+                                        <!-- secondbutton-->
+                                        <button
+                                            style="         text-align: center;    border: none; background: none;  margin-top: 0px;margin-left: 17px;  "
+                                            type="button" class="btn" data-bs-toggle="modal"
+                                            data-bs-target="#myModal">
+                                            <svg style="height: 22px" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                                            </svg>
+                                        </button>
+                                        <!-- secondbutton -->
+                                        <!-- thirdbutton-->
+                                        <button
+                                            style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;"
+                                            type="button" class="btn" data-bs-toggle="modal"
+                                            data-bs-target="#myModal">
+                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                                            </svg>
+
+                                        </button>
+                                        <!-- thirdbutton -->
+                                        <!-- fourthbutton -->
+                                        <button
+                                            style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;"
+                                            type="button" class="btn" data-bs-toggle="modal"
+                                            data-bs-target="#myModal">
+                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
+                                            </svg>
+
+                                        </button>
+                                        <!-- fourthbutton -->
+                                    </ul>
+
+                                    <div class="contactss"
+                                        style="display: flex; align-items: center;  justify-content: center; margin-top: 18px;">
+
+                                        <button
+                                            style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;"
+                                            type="button" class="btn" data-bs-toggle="modal"
+                                            data-bs-target="#myModal">
+                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                                            </svg>
+
+                                        </button>
+                                        <p>01823894527</p>
+
+
+
+                                    </div>
+                                    <div class="contactss"
+                                        style="display: flex; align-items: center;  justify-content: center; margin-top: 18px;     padding-bottom: 38px;">
+
+                                        <button
+                                            style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;"
+                                            type="button" class="btn" data-bs-toggle="modal"
+                                            data-bs-target="#myModal">
+                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                            </svg>
+
+
+                                        </button>
+                                        <p>contact@phoenixbaker.com</p>
+
+
+
+
+
+
+
+                                    </div>
+
+                                </div>
+                                <!-- label section -->
+                                <div class="label"
+                                    style="display: flex;  align-items: center;justify-content: space-between;padding: 22px 20px;">
+                                    <h3>label</h3>
+                                    <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                        class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+
+
+                                </div>
+                                <div class="labelbody"
+                                    style=" align-items: center;padding: 22px 20px; display: flex;flex-direction: column;     border-bottom: 1px solid #ccc;">
+                                    <h4 style=" color: black; font-size: larger;">
+                                        No Labels here.</h4>
+                                    <p style="  color: gray;">Add
+                                        labels for this contact with the
+                                        “+” icon</p>
+                                </div>
+
+
+                                <!-- notes section -->
+                                <div class="label"
+                                    style="display: flex;  align-items: center;justify-content: space-between;padding: 22px 20px;">
+                                    <h3>Notes</h3>
+                                    <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                        class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+
+
+                                </div>
+                                <div class="labelbody"
+                                    style=" align-items: center;padding: 22px 20px; display: flex;flex-direction: column;     border-bottom: 1px solid #ccc;">
+                                    <h4 style=" color: black; font-size: larger;">
+                                        No Notes here.</h4>
+                                    <p style="  color: gray;">Add
+                                        Notes for this contact with the
+                                        “+” icon</p>
+                                </div>
+
+
+                                <div class="contactssss" style="padding: 5px 18px;">
+                                    <h2 style="color: black;font-size: 24px;font-weight: 500;">
+                                        Contact Info</h2>
+                                    <div class="firstname" style="padding-top:12px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ;">
+                                            firstname</p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            phonix </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style=" font-size: 12px; padding-top:5px ; color:gray ">
+                                            Last Name</p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500; ">
+                                            Baker </p>
+                                    </div>
+                                </div>
+
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style=" font-size: 12px;   padding-top:5px ; color:gray ">
+                                            Lists </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            Phoenix </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px;   padding-top:5px ; color:gray ">
+                                            Lists</p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            phonix </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="  font-size: 12px; padding-top:5px ; color:gray ">
+                                            Phone Number</p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            92833729832839 </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Company Name</p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            - </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Job Title </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            Marketing Coordinator</p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Contact Owner </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            Phoenix</p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Lead Stage </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            - </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Lead Source </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            - </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Priority </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            - </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Country </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            - </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Subsciber </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            True</p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Last Channel </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            Facebook - Friday Chua </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Last Contact From You </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            Phonex </p>
+                                    </div>
+                                </div>
+                                <div class="contactssss" style="padding: 5px 18px;">
+
+                                    <div class="firstname" style="padding-top:-16px">
+                                        <p style="font-size: 12px; padding-top:5px ; color:gray ">
+                                            Last Contact From Customers </p>
+                                        <p style=" font-size: large;  color: black;font-weight: 500;">
+                                            15 May 2020 8:30 am </p>
                                     </div>
                                 </div>
 
                             </div>
-                            <!-- chatbox -->
+
                         </div>
-                        <!-- chat-area -->
                     </div>
+
+
                 </div>
             </div>
-        </section>
-        <!-- char-area -->
-        <?php
-        echo '</div>'; // Closing main-content div
-        ?>
     </div>
 </div>
+</div>
+
+</div>
+
+</section>
+
+<?php
+echo '</div>'; // Closing main-content div
+?>
+</div>
+</div>
+<script></script>
 <script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script>
@@ -1209,39 +1550,24 @@ $query = $this->db->query("SELECT message_body FROM whatsapp_messages WHERE mess
             $("#myModal").modal('show');
         });
     });
+
+    function setEqualHeight() {
+        var cols = document.querySelectorAll('.col');
+        var maxHeight = 0;
+        cols.forEach(function(col) {
+            col.style.height = 'auto';
+            var colHeight = col.offsetHeight;
+            if (colHeight > maxHeight) {
+                maxHeight = colHeight;
+            }
+        });
+        cols.forEach(function(col) {
+            col.style.height = maxHeight + 'px';
+        });
+    }
+
+    window.addEventListener('resize', setEqualHeight);
+    setEqualHeight();
+   
 </script>
-
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-
-<script>
-    var pusher = new Pusher('ae65b6841edff9407432', {
-        cluster: 'ap2',
-        encrypted: true
-    });
-    var channel = pusher.subscribe('my-channel');
-	// Redirect to the specified URL
-
-
-    channel.bind('message-sent', function(data) {
-
-        // Create a new list item element
-        var listItem = document.createElement('li');
-        listItem.classList.add('sender');
-
-        // Create a paragraph element for the message body
-        var paragraph = document.createElement('p');
-        paragraph.textContent = data.message; // Assign the received message
-
-        // Append the paragraph element to the list item
-        listItem.appendChild(paragraph);
-
-        // Append the list item to the message list
-        var messageList = document.getElementById('message-list');
-        messageList.appendChild(listItem);
-    });
 </script>
-
-
-
-
-
