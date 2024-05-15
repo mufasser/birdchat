@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacts</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">]
-    
-</head> -->
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Setting</title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.png">
@@ -29,6 +23,20 @@
 
 <style>
     /* responsive */
+    body {
+  font-size: 16px;
+}
+
+/* Styles for screens narrower than 768px (typical tablet breakpoint) */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .image {
+    width: 100%; /* Make images scale to full width on mobile */
+  }
+}
 
     /* responsive */
 
@@ -247,7 +255,45 @@
 
     li.list-group-item {
         border: none !important;
+         margin-bottom: 10px;
         /* or border: 0 !important; */
+    }
+
+    /* //////////////// */
+    .btn-group .btn {
+        border-radius: 20px;
+        /* Set border radius for all buttons */
+        padding: 10px 20px;
+        /* Set padding for all buttons */
+        background-color: #ccc;
+        /* Set default background color */
+        color: black;
+        /* Set default text color */
+        border-color: transparent;
+        /* Remove border color */
+    }
+
+    .btn-group .btn.active {
+        background-color: white;
+        /* Change background color of active button */
+        color: black;
+        /* Change text color of active button */
+        border-color: transparent;
+        /* Remove border color of active button */
+        padding: 10px 16px;
+        /* Adjust padding for active button */
+    }
+
+    .btn-group .btn:not(.active):hover {
+        background-color: #ccc;
+        /* Change background color of inactive buttons on hover */
+        color: black;
+        /* Change text color of inactive buttons on hover */
+    }
+
+    .btn-group .btn:focus {
+        box-shadow: none;
+        /* Remove focus box shadow */
     }
 </style>
 <!-- meida query of plan and pricing -->
@@ -306,9 +352,36 @@
     }
 </style> -->
 <!-- 2nd navbar -->
-<style>
+ <style>
+    /* Hide the section initially */
+    #Plans-and-BillingsSection {
+        display: none;
+    }
 
-</style>
+    /* Adjustments for small screens */
+    @media (max-width: 575px) {
+
+        /* Ensure the container has padding and can scroll horizontally */
+        #Plans-and-BillingsSection .container {
+            padding-right: 15px;
+            padding-left: 15px;
+            overflow-x: auto;
+        }
+
+        /* Ensure the row can't wrap */
+        #Plans-and-BillingsSection .pricing-row {
+            white-space: nowrap;
+        }
+
+        /* Adjust the viewport for responsiveness */
+        @viewport {
+            width: device-width;
+            zoom: 1.0;
+        }
+    }
+</style> 
+
+
 
 
 
@@ -366,7 +439,7 @@
                                 <div class="col-md-auto d-flex align-items-center"
                                     style="  flex-direction: column; padding: 0;">
                                     <p
-                                        style="margin-right: 168px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
+                                        style="margin-right: 203px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
                                         Personal info</p>
                                     <p class="ms-3">Update your photo and personal details here.</p>
                                 </div>
@@ -486,7 +559,7 @@
                                 <div class="col-md-auto d-flex align-items-center"
                                     style="  flex-direction: column; padding: 0;">
                                     <p
-                                        style="margin-right: 289px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
+                                        style="margin-right: 343px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
                                         Password </p>
                                     <p class="ms-3">Please enter your current password to change your password.</p>
                                 </div>
@@ -542,7 +615,7 @@
                                 <div class="col-md-auto d-flex align-items-center"
                                     style="  flex-direction: column; padding: 0;">
                                     <p
-                                        style="margin-right: 241px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
+                                        style="margin-right: 301px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
                                         Company Details </p>
                                     <p class="ms-3">Please enter your current company name and default time zone</p>
                                 </div>
@@ -758,34 +831,35 @@
                     <!-- User Managements section    end -->
 
                     <!--Plans and Billings    end -->
-                    <section id="Plans-and-BillingsSection" style="display:none;">
-                        <div class="container">
-                            <div class="row"style="    margin-bottom: 24px;">
-                                <div class="col-lg-12 text-center mt-5">
 
+                    <section id="Plans-and-BillingsSection">
+                        <div class="container">
+                            <div class="row" style="margin-bottom: 24px;">
+                                <div class="col-lg-12 text-center mt-5">
                                     <div class="btn-group toggle-btn" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-outline-primary active"
+                                        <button type="button" class="btn btn-outline active"
                                             data-toggle="billing-cycle" data-value="monthly">Monthly</button>
-                                        <button type="button" class="btn btn-outline-primary"
+                                        <button type="button" class="btn btn-outline"
                                             data-toggle="billing-cycle" data-value="yearly">Yearly</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row text-center pricing-row">
                                 <div class="col-md-3">
-                                    <div class=" pricing-card">
+                                    <div class="pricing-card">
                                         <div class="header">
+                                            <!-- Header content -->
                                         </div>
-                                        <div class="card-body " style="padding-top:195px">
+                                        <div class="card-body" style="padding-top: 195px;">
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">Accounts</li>
-                                                <li class="list-group-item">Customer contacts </li>
+                                                <li class="list-group-item">Customer contacts</li>
                                                 <li class="list-group-item">Broadcast messages</li>
                                                 <li class="list-group-item">Automation rules</li>
-                                                <li class="list-group-item"># of messaging channels </li>
+                                                <li class="list-group-item"># of messaging channels</li>
                                                 <hr>
-                                                <p class=""style="color: #2C3C8A;font-weight: 700;">Advanced
-                                                    features </p>
+                                                <p class="" style="color: #2C3C8A; font-weight: 700;">Advanced
+                                                    features</p>
 
                                                 <li class="list-group-item">Zapier & Integromat integration</li>
                                                 <li class="list-group-item">Advanced team settings</li>
@@ -797,13 +871,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class=" pricing-card">
+                                    <div class="pricing-card">
                                         <div class="header">
                                             <h3>Startup</h3>
                                             <p class="lead">Suitable for 4 persons team</p>
                                             <p class="price" data-price="monthly">Free</p>
-                                            <button class="btn btn-primary">Current Plan </button>
-                                            <!-- <h6 class="text-muted">Monthly Plan</h6> -->
+                                            <button class="btn btn-primary" style=" background: #ccc; border: none;">Current Plan </button>
+                                            <!-- <h6 class="text-muted">Monthly Plan</h6>  -->
                                         </div>
                                         <div class="card-body">
                                             <ul class="list-group list-group-flush">
@@ -813,10 +887,10 @@
                                                 <li class="list-group-item">10</li>
                                                 <li class="list-group-item">10</li>
                                                 <hr>
-                                                <li class="list-group-item"style="padding-top: 47px;"></li>
+                                                <li class="list-group-item" style="padding-top: 47px;"></li>
                                                 <li class="list-group-item">--</li>
-                                                <li class="list-group-item">--</li>
-                                                <li class="list-group-item">--</li>
+                                                <li class="list-group-item"style="margin-top: 40px;">--</li>
+                                                <li class="list-group-item"style="margin-top: 26px;">--</li>
                                                 <li class="list-group-item">--</li>
                                                 <li class="list-group-item">--</li>
                                             </ul>
@@ -825,14 +899,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class=" pricing-card">
+                                    <div class="pricing-card">
                                         <div class="header">
                                             <h3>Pro plan</h3>
                                             <p class="lead">Suitable for 4 persons team</p>
                                             <p class="price" data-price="monthly">$39 <spam class="text-muted">
                                                     /Monthly Plan</spam>
                                             </p>
-                                            <button class="btn btn-primary">Upgrade</button>
+                                           <button class="btn btn-primary"style="background: #2285C6;">Upgrade</button>
                                             <!-- <h6 class="text-muted">Monthly Plan</h6> -->
                                         </div>
                                         <div class="card-body">
@@ -843,14 +917,14 @@
                                                 <li class="list-group-item">20</li>
                                                 <li class="list-group-item">20</li>
                                                 <hr>
-                                                <li class="list-group-item"style="padding-top: 47px;"></li>
+                                                <li class="list-group-item" style="padding-top: 47px;"></li>
                                                 <li class="list-group-item">
                                                     <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
                                                 </li>
+                                                <li class="list-group-item"style="  margin-top: 40px;">--</li>
+                                                <li class="list-group-item"style="  margin-top: 26px;">--</li>
                                                 <li class="list-group-item">--</li>
-                                                <li class="list-group-item">--</li>
-                                                <li class="list-group-item">--</li>
-                                               <li class="list-group-item">
+                                                <li class="list-group-item">
                                                     <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
                                                 </li>
                                             </ul>
@@ -859,14 +933,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class=" pricing-card">
+                                    <div class="pricing-card">
                                         <div class="header">
                                             <h3>Enterprise plan</h3>
                                             <p class="lead">Suitable for Organization</p>
                                             <p class="price" data-price="monthly">$49 <spam class="text-muted">
                                                     /Monthly Plan</spam>
                                             </p>
-                                            <button class="btn btn-primary">Upgrade</button>
+                                            <button class="btn btn-primary"style="background: #2285C6;">Upgrade</button>
                                         </div>
                                         <div class="card-body">
                                             <ul class="list-group list-group-flush">
@@ -876,21 +950,22 @@
                                                 <li class="list-group-item">50</li>
                                                 <li class="list-group-item">50</li>
                                                 <hr>
-                                                <li class="list-group-item"style="padding-top: 47px;"></li>
+                                                <li class="list-group-item" style="padding-top: 47px;"></li>
+                                                <li class="list-group-item">
+                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
+                                                </li>
+                                                <li class="list-group-item"style="margin-top: 40px;">
+                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
+                                                </li>
+                                                <li class="list-group-item"style="margin-top: 29px;">
+                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
+                                                </li>
                                                 <li class="list-group-item">
                                                     <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
-                                                </li>
-                                                 <li class="list-group-item">
-                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
-                                                </li>
-                                               <li class="list-group-item">
-                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
+                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>"
+                                                        style="height: 24px; width: 24px;">
                                                 </li>
                                             </ul>
 
@@ -903,6 +978,7 @@
                     <!--Plans and Billings    end -->
 
                     <!--Inbox Settings    end -->
+
                     <section id="Inbox-SettingsSection" style="display:none;">
                         <ul class="nav " id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
@@ -935,7 +1011,7 @@
                                         <div class="col-md-auto d-flex align-items-center"
                                             style="  flex-direction: column; padding: 0;">
                                             <p
-                                                style="margin-right: 290px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
+                                                style="margin-right: 362px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
                                                 Unassigned conversations</p>
                                             <p class="ms-3">Manage which role(s) will receive push notifications from
                                                 unassigned conversations</p>
@@ -978,7 +1054,7 @@
                                             <p
                                                 style="margin-right: 290px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
                                                 Become a collaborator after replying to messages</p>
-                                            <p class=""style="   margin-left: -184px;">Manage which role(s) will
+                                            <p class=""style="   margin-left: -125px;">Manage which role(s) will
                                                 join as a collaborator in conversations after replying.</p>
                                         </div>
                                         <div class="col">
@@ -1016,7 +1092,7 @@
                                             <p
                                                 style="margin-right: 290px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
                                                 Remain as collaborator after assigning conversation</p>
-                                            <p class=""style="   margin-left: -106px;">Manage which role(s) will
+                                            <p class=""style="   margin-left: -25px;">Manage which role(s) will
                                                 remain as a collaborator after assigning conversations to teammates.</p>
                                         </div>
                                         <div class="col">
@@ -1060,7 +1136,7 @@
                                             <p
                                                 style="margin-right: 290px ;  font-size: 17px; font-weight: 500;     margin-bottom: 0px">
                                                 Manage default sorting for messages</p>
-                                            <p class=""style="   margin-left: -68px;">Manage which role(s) will
+                                            <p class=""style="   margin-left: 6px;">Manage which role(s) will
                                                 receive push notifications from unassigned conversations</p>
                                         </div>
                                         <div class="col">
@@ -1278,33 +1354,33 @@
 
                     <!--System Preference     end -->
                     <section id="System-PreferenceSection" style="display:none;">
-                         <div class="container">
-                            <div class="row"style="    margin-bottom: 24px;">
+                        <div class="container">
+                            <div class="row" style="margin-bottom: 24px;">
                                 <div class="col-lg-12 text-center mt-5">
-
                                     <div class="btn-group toggle-btn" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-outline-primary active"
+                                        <button type="button" class="btn btn-outline active"
                                             data-toggle="billing-cycle" data-value="monthly">Monthly</button>
-                                        <button type="button" class="btn btn-outline-primary"
+                                        <button type="button" class="btn btn-outline"
                                             data-toggle="billing-cycle" data-value="yearly">Yearly</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row text-center pricing-row">
                                 <div class="col-md-3">
-                                    <div class=" pricing-card">
+                                    <div class="pricing-card">
                                         <div class="header">
+                                            <!-- Header content -->
                                         </div>
-                                        <div class="card-body " style="padding-top:195px">
+                                        <div class="card-body" style="padding-top: 195px;">
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">Accounts</li>
-                                                <li class="list-group-item">Customer contacts </li>
+                                                <li class="list-group-item">Customer contacts</li>
                                                 <li class="list-group-item">Broadcast messages</li>
                                                 <li class="list-group-item">Automation rules</li>
-                                                <li class="list-group-item"># of messaging channels </li>
+                                                <li class="list-group-item"># of messaging channels</li>
                                                 <hr>
-                                                <p class=""style="color: #2C3C8A;font-weight: 700;">Advanced
-                                                    features </p>
+                                                <p class="" style="color: #2C3C8A; font-weight: 700;">Advanced
+                                                    features</p>
 
                                                 <li class="list-group-item">Zapier & Integromat integration</li>
                                                 <li class="list-group-item">Advanced team settings</li>
@@ -1316,13 +1392,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class=" pricing-card">
+                                    <div class="pricing-card">
                                         <div class="header">
                                             <h3>Startup</h3>
                                             <p class="lead">Suitable for 4 persons team</p>
                                             <p class="price" data-price="monthly">Free</p>
-                                            <button class="btn btn-primary">Current Plan </button>
-                                            <!-- <h6 class="text-muted">Monthly Plan</h6> -->
+                                            <button class="btn btn-primary" style=" background: #ccc; border: none;">Current Plan </button>
+                                            <!-- <h6 class="text-muted">Monthly Plan</h6>  -->
                                         </div>
                                         <div class="card-body">
                                             <ul class="list-group list-group-flush">
@@ -1332,10 +1408,10 @@
                                                 <li class="list-group-item">10</li>
                                                 <li class="list-group-item">10</li>
                                                 <hr>
-                                                <li class="list-group-item"style="padding-top: 47px;"></li>
+                                                <li class="list-group-item" style="padding-top: 47px;"></li>
                                                 <li class="list-group-item">--</li>
-                                                <li class="list-group-item">--</li>
-                                                <li class="list-group-item">--</li>
+                                                <li class="list-group-item"style="margin-top: 40px;">--</li>
+                                                <li class="list-group-item"style="margin-top: 26px;">--</li>
                                                 <li class="list-group-item">--</li>
                                                 <li class="list-group-item">--</li>
                                             </ul>
@@ -1344,14 +1420,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class=" pricing-card">
+                                    <div class="pricing-card">
                                         <div class="header">
                                             <h3>Pro plan</h3>
                                             <p class="lead">Suitable for 4 persons team</p>
                                             <p class="price" data-price="monthly">$39 <spam class="text-muted">
                                                     /Monthly Plan</spam>
                                             </p>
-                                            <button class="btn btn-primary">Upgrade</button>
+                                           <button class="btn btn-primary"style="background: #2285C6;">Upgrade</button>
                                             <!-- <h6 class="text-muted">Monthly Plan</h6> -->
                                         </div>
                                         <div class="card-body">
@@ -1362,14 +1438,14 @@
                                                 <li class="list-group-item">20</li>
                                                 <li class="list-group-item">20</li>
                                                 <hr>
-                                                <li class="list-group-item"style="padding-top: 47px;"></li>
+                                                <li class="list-group-item" style="padding-top: 47px;"></li>
                                                 <li class="list-group-item">
                                                     <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
                                                 </li>
+                                                <li class="list-group-item"style="  margin-top: 40px;">--</li>
+                                                <li class="list-group-item"style="  margin-top: 26px;">--</li>
                                                 <li class="list-group-item">--</li>
-                                                <li class="list-group-item">--</li>
-                                                <li class="list-group-item">--</li>
-                                               <li class="list-group-item">
+                                                <li class="list-group-item">
                                                     <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
                                                 </li>
                                             </ul>
@@ -1378,14 +1454,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class=" pricing-card">
+                                    <div class="pricing-card">
                                         <div class="header">
                                             <h3>Enterprise plan</h3>
                                             <p class="lead">Suitable for Organization</p>
                                             <p class="price" data-price="monthly">$49 <spam class="text-muted">
                                                     /Monthly Plan</spam>
                                             </p>
-                                            <button class="btn btn-primary">Upgrade</button>
+                                            <button class="btn btn-primary"style="background: #2285C6;">Upgrade</button>
                                         </div>
                                         <div class="card-body">
                                             <ul class="list-group list-group-flush">
@@ -1395,21 +1471,22 @@
                                                 <li class="list-group-item">50</li>
                                                 <li class="list-group-item">50</li>
                                                 <hr>
-                                                <li class="list-group-item"style="padding-top: 47px;"></li>
+                                                <li class="list-group-item" style="padding-top: 47px;"></li>
+                                                <li class="list-group-item">
+                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
+                                                </li>
+                                                <li class="list-group-item"style="margin-top: 40px;">
+                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
+                                                </li>
+                                                <li class="list-group-item"style="margin-top: 29px;">
+                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
+                                                </li>
                                                 <li class="list-group-item">
                                                     <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
-                                                </li>
-                                                 <li class="list-group-item">
-                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
-                                                </li>
-                                               <li class="list-group-item">
-                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>" style="height: 24px; width: 24px;">
+                                                    <img src="<?php echo base_url('assets/images/img/Checkicon.png'); ?>"
+                                                        style="height: 24px; width: 24px;">
                                                 </li>
                                             </ul>
 
