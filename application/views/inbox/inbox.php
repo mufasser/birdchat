@@ -3,15 +3,12 @@
 
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
 
@@ -845,7 +842,7 @@
             /* Bottom bar color and thickness */
         }
 
-      
+
         @media (max-width: 1100px) {
 
             .row>.col:first-child,
@@ -882,10 +879,10 @@
             z-index: 2;
             border: none;
             top: 2px;
-           
+
             cursor: pointer;
             color: white;
-         
+
             transform: translateX(2px);
         }
 
@@ -897,40 +894,45 @@
             height: 30px;
             border-radius: 5px;
         }
+
         ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-/* Track */
-::-webkit-scrollbar-track {
-    background: #e3e5f5;
-    border-radius: 10px;
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #94a3b8;
-    border-radius: 10px;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-}
-@media (max-width: 768px) {
-    .message-send-button {
-        margin-right: 10px; /* Adjust as needed */
-    }
+            width: 5px;
+            height: 5px;
+        }
 
-    .message-send-button-icon:first-child {
-        margin-right: 10px; /* Adjust as needed */
-    }
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #e3e5f5;
+            border-radius: 10px;
+        }
 
-    .message-send-button-icon:last-child {
-        margin-right: 20px; /* Adjust as needed */
-    }
-}
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
 
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
 
+        @media (max-width: 768px) {
+            .message-send-button {
+                margin-right: 10px;
+                /* Adjust as needed */
+            }
 
+            .message-send-button-icon:first-child {
+                margin-right: 10px;
+                /* Adjust as needed */
+            }
+
+            .message-send-button-icon:last-child {
+                margin-right: 20px;
+                /* Adjust as needed */
+            }
+        }
     </style>
 
 </head>
@@ -944,39 +946,28 @@
         echo '<div class="main-content">';
         ?>
         <section>
-            <div class=""style=" margin-top: -92px;">
+            <div class="" style=" margin-top: -92px;">
                 <div class="row">
                     <!-- imbox -->
-                    <div class="col "style="height: 100vh;padding: 0px;margin-left: 9px;">
+                    <div class="col " style="height: 100vh;padding: 0px;margin-left: 9px;">
                         <div class="chatlist">
                             <div class="modal-dialog-scrollable">
                                 <div class="modal-content" style="height: 100vh;">
                                     <div class="chat-header">
                                         <div class="msg-search d-flex">
                                             <h1 style="font-weight: 500;">Inbox</h1>
-                                            <input type="text" class="form-control" id="inlineFormInputGroup"
-                                                placeholder="Search" aria-label="search" style="width: 95%;">
+                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search" aria-label="search" style="width: 95%;">
                                         </div>
-                                        <ul style="padding: 2px;justify-content: space-evenly;" class="nav nav-tabs"
-                                            id="myTab" role="tablist">
+                                        <ul style="padding: 2px;justify-content: space-evenly;" class="nav nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item custom-tabs" role="presentation">
-                                                <button style="padding-bottom: 10px; color: #667085;"
-                                                    class="nav-links active" id="Open-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#Open" type="button" role="tab"
-                                                    aria-controls="Open" aria-selected="true">Assigned to
+                                                <button style="padding-bottom: 10px; color: #667085;" class="nav-links active" id="Open-tab" data-bs-toggle="tab" data-bs-target="#Open" type="button" role="tab" aria-controls="Open" aria-selected="true">Assigned to
                                                     me</button>
                                             </li>
                                             <li class="nav-item custom-tabs" role="presentation">
-                                                <button style="padding-bottom: 10px; color: #667085;" class="nav-links"
-                                                    id="Closed-tab" data-bs-toggle="tab" data-bs-target="#Closed"
-                                                    type="button" role="tab" aria-controls="Closed"
-                                                    aria-selected="false">Collaborations</button>
+                                                <button style="padding-bottom: 10px; color: #667085;" class="nav-links" id="Closed-tab" data-bs-toggle="tab" data-bs-target="#Closed" type="button" role="tab" aria-controls="Closed" aria-selected="false">Collaborations</button>
                                             </li>
                                             <li class="nav-item custom-tabs" role="presentation">
-                                                <button style="padding-bottom: 10px; color: #667085;" class="nav-links"
-                                                    id="mention-tab" data-bs-toggle="tab" data-bs-target="#mention"
-                                                    type="button" role="tab" aria-controls="mention"
-                                                    aria-selected="false">Mentions</button>
+                                                <button style="padding-bottom: 10px; color: #667085;" class="nav-links" id="mention-tab" data-bs-toggle="tab" data-bs-target="#mention" type="button" role="tab" aria-controls="mention" aria-selected="false">Mentions</button>
                                             </li>
                                         </ul>
                                     </div>
@@ -985,10 +976,9 @@
 
                                         <div class="chat-lists">
                                             <div class="tab-content" id="myTabContent">
-                                                <div class="tab-pane fade show active" id="Open" role="tabpanel"
-                                                    aria-labelledby="Open-tab">
+                                                <div class="tab-pane fade show active" id="Open" role="tabpanel" aria-labelledby="Open-tab">
 
-													<div class="chat-list">
+                                                    <div class="chat-list">
                                                         <a href="#" class="d-flex align-items-center">
                                                             <div class="flex-shrink-0">
                                                                 <img src="<?php echo base_url('assets/images/img/Avatar.png'); ?>" class="img-fluid">
@@ -1049,12 +1039,10 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="tab-pane fade" id="Closed" role="tabpanel"
-                                                    aria-labelledby="Closed-tab">
+                                                <div class="tab-pane fade" id="Closed" role="tabpanel" aria-labelledby="Closed-tab">
 
                                                 </div>
-                                                <div class="tab-pane fade" id="mention" role="tabpanel"
-                                                    aria-labelledby="Closed-tab">
+                                                <div class="tab-pane fade" id="mention" role="tabpanel" aria-labelledby="Closed-tab">
 
                                                 </div>
                                             </div>
@@ -1066,8 +1054,8 @@
                         </div>
                     </div>
                     <!-- chatbox -->
-                    <div class="col-6 "style="padding: 0px;height: 100vh;">
-					<div class="chatbox">
+                    <div class="col-6 " style="padding: 0px;height: 100vh;">
+                        <div class="chatbox">
                             <div class="modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="msg-head">
@@ -1157,141 +1145,90 @@
 
                                             <?php endif; ?>
                                         </div>
-                                        <li id="message-list" class="sender">
+                                        <ul id="message-list" class="sender">
 
-                                        </li>
+                                        </ul>
                                     </div>
+
+                                    <!--  -->
                                     <div class="send-box">
-                                        <!-- Your send message box content -->
-                                        <form action="<?php echo base_url('home/send_messages'); ?>" method="post">
-                                            <div class="buttonIn"style="   width: 100%;">
-                                                <input type="text" id="enter" class="form-control"
-                                                    placeholder="Write message…"
-                                                    style="width: 100%;height: 100px;padding-bottom: 36px;" required>
-                                                <button class="message-send-button" id="clear"
-                                                    style="margin-top:64px;margin-right:19px">send</button>
-                                                <a class="message-send-button-icon" id="clear"
-                                                    style="margin-top: 64px; margin-right: 216px;">
-                                                    
-                                                    <svg style="   height: 20px;" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
+                                        <form id="messageForm" action="<?php echo base_url('home/send_messages'); ?>" method="post" enctype="multipart/form-data">
+                                            <div class="buttonIn" style="width: 100%;">
+                                                <input type="text" id="message" name="message" class="form-control" placeholder="Write message…" style="width: 100%; height: 100px; padding-bottom: 36px;">
+                                                <button type="submit" class="message-send-button" style="margin-top: 64px; margin-right: 19px;">Send</button>
+                                                <label for="doc" class="message-send-button-icon" style="margin-top: 64px; margin-right: 216px; cursor: pointer; display: inline-block;">
+                                                    <svg style="height: 20px; color: black;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
                                                     </svg>
-
-                                                </a>
-                                                <a class="message-send-button-icon" id="clear"
-                                                    style="margin-top: 64px; margin-right: 244px;">
-
-                                                    <svg style="   height: 20px;" xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                        stroke="currentColor" class="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                                                    </svg>
-
-                                                </a>
+                                                    <input type="file" id="doc" name="file" style="display: none;" accept=".pdf,.txt">
+                                                </label>
                                             </div>
-
                                         </form>
                                     </div>
+
+
                                 </div>
                             </div>
 
                         </div>
 
                     </div>
+
                     <!-- discripation -->
-                    <div class="col overflow-auto" style="max-height: 892px; height: 943px;     margin-top: -35px;" >
-                        <div class="modal-dialog"
-                            style=" height: max-content;margin-left: auto;background-color: none !important; margin: 0px;">
+                    <div class="col overflow-auto" style="max-height: 892px; height: 943px;     margin-top: -35px;">
+                        <div class="modal-dialog" style=" height: max-content;margin-left: auto;background-color: none !important; margin: 0px;">
                             <div class="modal-content" style="background: #ffffff">
                                 <div class="modal-header">
-                                   
-                            
+
+
                                 </div>
-                                <div class="header"
-                                    style=" display: flex;  justify-content: center; flex-direction: column; align-items: center;border-bottom: 1px solid #ccc;">
+                                <div class="header" style=" display: flex;  justify-content: center; flex-direction: column; align-items: center;border-bottom: 1px solid #ccc;">
                                     <div class="profil">
                                         <img src="<?php echo base_url('assets/images/img/Avatardialogbox.png'); ?>" style="height: 57px; width: 57px" />
                                     </div>
-                                    <h5 class="modal-title"
-                                        style="margin-top: 14px; font-weight: 700; padding-bottom: 29px">
+                                    <h5 class="modal-title" style="margin-top: 14px; font-weight: 700; padding-bottom: 29px">
                                         Phoenix Baker
                                     </h5>
                                 </div>
                                 <div class="contact-section" style="border-bottom: 1px solid #ccc">
-                                    <ul
-                                        style="     display: flex;    justify-content: center;   justify-content: space-evenly;       padding-top: 15px;">
+                                    <ul style="     display: flex;    justify-content: center;   justify-content: space-evenly;       padding-top: 15px;">
 
-                                        <button
-                                            style="   text-align: center;  border: none;    background: none;   margin-top: 0px; margin-left: 17px;"
-                                            type="button" class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#myModal">
-                                            <svg style="height: 22px" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                                        <button style="   text-align: center;  border: none;    background: none;   margin-top: 0px; margin-left: 17px;" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            <svg style="height: 22px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                                             </svg>
                                         </button>
                                         <!-- firstbutton -->
                                         <!-- secondbutton-->
-                                        <button
-                                            style="         text-align: center;    border: none; background: none;  margin-top: 0px;margin-left: 17px;  "
-                                            type="button" class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#myModal">
-                                            <svg style="height: 22px" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                                        <button style="         text-align: center;    border: none; background: none;  margin-top: 0px;margin-left: 17px;  " type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            <svg style="height: 22px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
                                             </svg>
                                         </button>
                                         <!-- secondbutton -->
                                         <!-- thirdbutton-->
-                                        <button
-                                            style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;"
-                                            type="button" class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#myModal">
-                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                                        <button style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
                                             </svg>
 
                                         </button>
                                         <!-- thirdbutton -->
                                         <!-- fourthbutton -->
-                                        <button
-                                            style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;"
-                                            type="button" class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#myModal">
-                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
+                                        <button style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
                                             </svg>
 
                                         </button>
                                         <!-- fourthbutton -->
                                     </ul>
 
-                                    <div class="contactss"
-                                        style="display: flex; align-items: center;  justify-content: center; margin-top: 18px;">
+                                    <div class="contactss" style="display: flex; align-items: center;  justify-content: center; margin-top: 18px;">
 
-                                        <button
-                                            style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;"
-                                            type="button" class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#myModal">
-                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                                        <button style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                                             </svg>
 
                                         </button>
@@ -1300,18 +1237,11 @@
 
 
                                     </div>
-                                    <div class="contactss"
-                                        style="display: flex; align-items: center;  justify-content: center; margin-top: 18px;     padding-bottom: 38px;">
+                                    <div class="contactss" style="display: flex; align-items: center;  justify-content: center; margin-top: 18px;     padding-bottom: 38px;">
 
-                                        <button
-                                            style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;"
-                                            type="button" class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#myModal">
-                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                        <button style="text-align: center; border: none; background: none; margin-top: 0px; margin-left: 17px;" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                                             </svg>
 
 
@@ -1328,20 +1258,15 @@
 
                                 </div>
                                 <!-- label section -->
-                                <div class="label"
-                                    style="display: flex;  align-items: center;justify-content: space-between;padding: 22px 20px;">
+                                <div class="label" style="display: flex;  align-items: center;justify-content: space-between;padding: 22px 20px;">
                                     <h3>label</h3>
-                                    <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                        class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                     </svg>
 
 
                                 </div>
-                                <div class="labelbody"
-                                    style=" align-items: center;padding: 22px 20px; display: flex;flex-direction: column;     border-bottom: 1px solid #ccc;">
+                                <div class="labelbody" style=" align-items: center;padding: 22px 20px; display: flex;flex-direction: column;     border-bottom: 1px solid #ccc;">
                                     <h4 style=" color: black; font-size: larger;">
                                         No Labels here.</h4>
                                     <p style="  color: gray;">Add
@@ -1351,20 +1276,15 @@
 
 
                                 <!-- notes section -->
-                                <div class="label"
-                                    style="display: flex;  align-items: center;justify-content: space-between;padding: 22px 20px;">
+                                <div class="label" style="display: flex;  align-items: center;justify-content: space-between;padding: 22px 20px;">
                                     <h3>Notes</h3>
-                                    <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                        class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    <svg style="height: 22px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                     </svg>
 
 
                                 </div>
-                                <div class="labelbody"
-                                    style=" align-items: center;padding: 22px 20px; display: flex;flex-direction: column;     border-bottom: 1px solid #ccc;">
+                                <div class="labelbody" style=" align-items: center;padding: 22px 20px; display: flex;flex-direction: column;     border-bottom: 1px solid #ccc;">
                                     <h4 style=" color: black; font-size: larger;">
                                         No Notes here.</h4>
                                     <p style="  color: gray;">Add
@@ -1568,6 +1488,38 @@ echo '</div>'; // Closing main-content div
 
     window.addEventListener('resize', setEqualHeight);
     setEqualHeight();
-   
 </script>
+<script>
+    var pusher = new Pusher('ae65b6841edff9407432', {
+        cluster: 'ap2',
+        encrypted: true
+    });
+    var channel = pusher.subscribe('my-channel');
+
+    channel.bind('message-sent', function(data) {
+        console.log('Received data:', data); // Debugging: Log the received data
+
+        // Create a new list item element
+        var listItem = document.createElement('li');
+        listItem.classList.add('sender');
+
+        // Check if the received data contains an image URL
+
+        // Create a paragraph element for the message body
+        if (data.message) {
+            console.log('Message:', data.message); // Debugging: Log the message
+
+            var paragraph = document.createElement('p');
+            paragraph.textContent = data.message; // Assign the received message
+
+            // Append the paragraph element to the list item
+            listItem.appendChild(paragraph);
+        } else {
+            console.log('No message found in data'); // Debugging: Log if no message
+        }
+
+        // Append the list item to the message list
+        var messageList = document.getElementById('message-list');
+        messageList.appendChild(listItem);
+    });
 </script>

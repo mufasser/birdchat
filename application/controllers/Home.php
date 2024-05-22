@@ -43,7 +43,7 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-	  $this->load->library('input');
+        $this->load->library('input');
         set_time_limit(0);
         $this->load->helpers(array('my_helper', 'addon_helper', 'bot_helper'));
 
@@ -7380,126 +7380,9 @@ class Home extends CI_Controller
 
     // webhook
 
-public function send_messages()
+
+    public function webhook_url()
     {
-        $message = $this->input->post('message');
-        // $query = $this->db->query("SELECT recipient FROM whatsapp_messages LIMIT 1");
-        // $Api_query = $this->db->select('api_key')->where('id', $userId)->get('users');
-        // $query = $this->db->query("SELECT recipient FROM whatsapp_messages LIMIT 1");	
-        // $result = $Api_query->row_array();
-        // $api_key = $result['api_key'];
-        // if ($query) {
-        //     // Fetch the result as an array
-        //     $result = $query->row_array();
-
-        //     // Extract the column value from the result
-        //     $columnData = $result['recipient'];
-        // }
-        $payload = json_encode([
-            "messaging_product" => "whatsapp",
-            "recipient_type" => "individual",
-            "to" => "923235259115",
-            "type" => "text",
-            "text" => [
-                "body" => $message
-            ]
-        ]);
-
-        // Replace with your actual WhatsApp API URL and access token
-        $url = "https://waba-sandbox.360dialog.io/v1/messages";
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-       
-  curl_setopt($ch, CURLOPT_HTTPHEADER, [
-           'Content-Type: application/json',
-         "D360-Api-Key: nIksrA_sandbox"
-        ]);
-
-        $response = curl_exec($ch);
-        $error = curl_error($ch);
-
-        curl_close($ch);
-
-        if ($error) {
-            // Handle error (log, display message, etc.)
-            echo "Error sending message: " . $error;
-        } else {
-            $decoded_response = json_decode($response);
-            if (isset($decoded_response->error)) {
-                // Handle API error (log, display message, etc.)
-                echo "API Error: " . $decoded_response->error->message;
-            } else {
-                $conn = new mysqli("localhost", "waba_birdchat_io", "Cims@182020", "waba_birdchat_io");
-
-                // Check connection
-                if ($conn->connect_error) {
-                    throw new Exception("Database connection failed: " . $conn->connect_error);
-                }
-
-                $data = json_decode($response, true);
-                $contacts = $data['contacts'];
-                $messages = $data['messages'];
-
-                foreach ($messages as $message) {
-                    $message_id = $message['id'];
-                }
-
-                foreach ($contacts as $contact) {
-                    $contact_input = $contact['input'];
-                    $contact_id = $contact['wa_id'];
-                }
-
-
-                $insert_data = array(
-                    'message_id' => $message_id,
-                    'input_id' => $contact_input,
-                    'wa_id' => $contact_id,
-                    'recipient' => "923235259115",
-                    'message_body' => $this->input->post('message'),
-		    'timestamp' => date('Y-m-d H:i:s')
-                );
-
-                // Insert combined data into the database
-                $inserted = $this->db->insert('whatsapp_messages', $insert_data);
-		if($inserted)
-{
-        $options = array(
-            'cluster' => 'ap2',
-            'useTLS' => true
-        );
-        $pusher = new Pusher\Pusher(
-            'ae65b6841edff9407432',
-            'c67a5cb18b2831e69b72',
-            '1799640',
-            $options
-        );
-
-        // Trigger a Pusher event
-        $pusher->trigger('my-channel', 'message-sent', ['message' => 'New message sent']);
-	$this->load->helper('url');
-
-	// Redirect to the specified URL
-	redirect(base_url('social_accounts/inbox'));
-        
-}
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-
-	public function webhook_url()
-	{
 
         $this->load->database();
         $json_data = file_get_contents('php://input');
@@ -7513,20 +7396,20 @@ public function send_messages()
             $timestamp = date('Y-m-d H:i:s', $data['entry'][0]['changes'][0]['value']['statuses'][0]['timestamp']);
             $recipient_id = $data['entry'][0]['changes'][0]['value']['statuses'][0]['recipient_id'];
             $conversation_id = $data['entry'][0]['changes'][0]['value']['statuses'][0]['conversation']['id'];
- 	    $body = $data['entry'][0]['changes'][0]['value']['messages'][0]['text']['body'];
-	    $recipient= $data['entry'][0]['changes'][0]['value']['messages'][0]['from'];
-	    $wa_id= $data['entry'][0]['changes'][0]['statuses']['id'];
-	    $user_name = $data['entry'][0]['changes'][0]['value']['profile'][0]['name'];
- 
+            $body = $data['entry'][0]['changes'][0]['value']['messages'][0]['text']['body'];
+            $recipient = $data['entry'][0]['changes'][0]['value']['messages'][0]['from'];
+            $wa_id = $data['entry'][0]['changes'][0]['statuses']['id'];
+            $user_name = $data['entry'][0]['changes'][0]['value']['profile'][0]['name'];
+	
             $insert_data = array(
                 'entry_id' => $entry_id,
                 'message_id' => $status_id,
                 'status' => $status,
                 'timestamp' => $timestamp,
                 'recipient' => $recipient,
-		'message_body' => $body,
-		'wa_id' => $wa_id,
-		'user_name' => $user_name
+                'message_body' => $body,
+                'wa_id' => $wa_id,
+                'user_name' => $user_name
                 //'conversation_id' => $conversation_id
             );
 
@@ -7534,19 +7417,19 @@ public function send_messages()
 
             // Check if insertion was successful
             if ($this->db->affected_rows() > 0) {
-$options = array(
-            'cluster' => 'ap2',
-            'useTLS' => true
-        );
-        $pusher = new Pusher\Pusher(
-            'ae65b6841edff9407432',
-            'c67a5cb18b2831e69b72',
-            '1799640',
-            $options
-        );
+                $options = array(
+                    'cluster' => 'ap2',
+                    'useTLS' => true
+                );
+                $pusher = new Pusher\Pusher(
+                    'ae65b6841edff9407432',
+                    'c67a5cb18b2831e69b72',
+                    '1799640',
+                    $options
+                );
 
-        // Trigger a Pusher event
-        $pusher->trigger('my-channel', 'message-sent', ['message' => $body]);
+                // Trigger a Pusher event
+                $pusher->trigger('my-channel', 'message-sent', ['message' => $body]);
                 echo "Data inserted successfully into the database.";
             } else {
                 echo "Failed to insert data into the database.";
@@ -7555,53 +7438,409 @@ $options = array(
             echo "Failed to decode JSON data from the request body.";
         }
 
-    	// Get the JSON data from the request body
-    	$payload = file_get_contents('php://input');
-	    $data = json_decode($payload, true);
-    	// Specify the path to the log file
-    	$log_file = 'logs/webhook.log';
+        // Get the JSON data from the request body
+        $payload = file_get_contents('php://input');
+        $data = json_decode($payload, true);
+        // Specify the path to the log file
+        $log_file = 'logs/webhook.log';
 
-    	// Append the payload to the log file
-    	$result = file_put_contents($log_file, $payload . PHP_EOL, FILE_APPEND);
-    	
-	} 
-	
-
-public function threedialog_register()
-{
-	
-
-$userId = $this->session->userdata('user_id');
-$apiKey = $this->input->post('api_key');
-$webhookURL = "https://waba.birdchat.io/webhook_url";
-$baseURL = "https://waba-sandbox.360dialog.io/v1/configs/webhook";
-
-
-// Make sure both user ID and API key are not empty
-if (!empty($userId) && !empty($apiKey)) {
-    // Construct the SQL query to update the api_key column for the user
-    $sql = "UPDATE users SET api_key = ? WHERE id = ?";
-    
-    // Execute the query with user ID and API key as parameters
-    $this->db->query($sql, array($apiKey, $userId));
-
-    // Check if the update was successful
-    if ($this->db->affected_rows() > 0) {
-	
-        // Redirect back to the page with a success message
- 	$url = $baseURL . "?api_key=" . urlencode($apiKey) . "&webhook_url=" . urlencode($webhookURL);
-	redirect(base_url('social_accounts/index') . '?message=Api%20key%20updated%20successfully');
-
-    } else {
-        // No rows were affected, handle error (e.g., display an error message)
-        redirect('error_page?message=Failed%20to%20update%20Api%20key');
+        // Append the payload to the log file
+        $result = file_put_contents($log_file, $payload . PHP_EOL, FILE_APPEND);
     }
-} else {
+    public function threedialog_register()
+    {
+        $url = 'https://hub.360dialog.io/api/v2/token';
+        $log_file = 'logs/token.log';
+    
+        // Data to be sent in the request body
+        $data = [
+            'username' => 'mawaisjaved41@gmail.com',
+            'password' => 'NoNewP@ssword'
+        ];
+    
+        // Initialize curl
+        $curl = curl_init();
+    
+        // Set curl options
+        curl_setopt_array($curl, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen(json_encode($data))
+            ]
+        ]);
+    
+        // Execute curl request
+        $response = curl_exec($curl);
+        $error = curl_error($curl);
+    
+        // Close curl
+        curl_close($curl);
+    
+        // Log the response
+        file_put_contents($log_file, $response . PHP_EOL, FILE_APPEND);
+    
+        if ($error) {
+            // Handle curl error
+            echo "Error: " . $error;
+        } else {
+            $response_data = json_decode($response, true);
+            $access_token = $response_data['access_token'];
+    
+            // Token obtained from previous request
+            $token = $access_token;
+            $log_file = 'logs/channel_logs.log';
+    
+            // URL for the channel endpoint
+            $url = 'https://hub.360dialog.io/api/v2/partners/kCVDXOPA/channels';
+    
+            // Initialize curl
+            $curl = curl_init();
+    
+            // Set curl options
+            curl_setopt_array($curl, [
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_HTTPHEADER => [
+                    'Authorization: Bearer ' . $token
+                ]
+            ]);
+    
+            // Execute curl request
+            $response = curl_exec($curl);
+            $error = curl_error($curl);
+    
+            // Close curl
+            curl_close($curl);
+    
+            // Log the response
+            file_put_contents($log_file, $response . PHP_EOL, FILE_APPEND);
+    
+            if ($error) {
+                // Handle curl error
+                echo "Error: " . $error;
+            } else {
+                // Token obtained from previous request
+                $access_token = $response_data['access_token'];
+    
+                // Token obtained from previous request
+                $token = $access_token;
+                $log_file = 'logs/generate_api.log';
+    
+                // Channel ID
+                // $channel_id = "Iio89nCH";
+    
+                // URL for the API keys endpoint
+                $url = 'https://hub.360dialog.io/api/v2/partners/kCVDXOPA/channels/Iio89nCH/api_keys';
+    
+                // Data to be sent in the request body
+                $data = [];
+    
+                // Initialize curl
+                $curl = curl_init();
+    
+                // Set curl options
+                curl_setopt_array($curl, [
+                    CURLOPT_URL => $url,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_POST => true,
+                    CURLOPT_POSTFIELDS => json_encode($data),
+                    CURLOPT_HTTPHEADER => [
+                        'Authorization: Bearer ' . $token,
+                        'Content-Type: application/json'
+                    ]
+                ]);
+    
+                // Execute curl request
+                $response = curl_exec($curl);
+                $error = curl_error($curl);
+    
+                // Close curl
+                curl_close($curl);
+    
+                // Log the response
+                file_put_contents($log_file, $response . PHP_EOL, FILE_APPEND);
+    
+                if ($error) {
+                    // Handle curl error
+                    echo "Error: " . $error;
+                } else {
+    
+                    // Decode the JSON string into a PHP associative array
+                    $data = json_decode($response, true);
+    
+                    // Access the value of the "api_key" key
+                    $apiKey = $data['api_key'];
+                    $apiId = $data['api_id'];
+                    $userId = $this->session->userdata('user_id');
+                    $webhookURL = "https://waba.birdchat.io/webhook_url";
+                    $baseURL = "https://waba-sandbox.360dialog.io/v1/configs/webhook";
+    
+                    // Make sure both user ID and API key are not empty
+                    if (!empty($userId) && !empty($apiKey)) {
+    
+                        $data = array(
+                            'api_id' => $apiId,
+                            'api_key' => $apiKey,
+                            'user_id' => $userId,
+                            'access_token' => $token,
+                            'partner_id' => 'kCVDXOPA'
+                        );
+    
+                        // Insert data into the table
+                        $result = $this->db->insert('360_dialog_config', $data);
+    
+                        // Construct the SQL query to update the api_key column for the user
+                        $sql = "UPDATE users SET api_key = ? WHERE id = ?";
+    
+                        // Execute the query with user ID and API key as parameters
+                        $this->db->query($sql, array($apiKey, $userId));
+    
+                        // Check if the update was successful
+                        if ($this->db->affected_rows() > 0) {
+    
+                            // Redirect back to the page with a success message
+                            $url = $baseURL . "?api_key=" . urlencode($apiKey) . "&webhook_url=" . urlencode($webhookURL);
+                            redirect(base_url('social_accounts/index') . '?message=Api%20key%20updated%20successfully');
+                        } else {
+                            // No rows were affected, handle error (e.g., display an error message)
+                            redirect('error_page?message=Failed%20to%20update%20Api%20key');
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-    redirect('error_page?message=User%20ID%20or%20API%20key%20is%20missing');
+    public function send_messages()
+{
+    header('Content-Type: application/json'); // Ensure the response is JSON
+
+    // Check if user is logged in
+    $userId = $this->session->userdata('user_id');
+    if (!$userId) {
+        echo json_encode(['error' => 'User not logged in.']);
+        return;
+    }
+
+    // Retrieve the API key for the user
+    $Api_query = $this->db->select('api_key')->where('id', $userId)->get('users');
+    if ($Api_query->num_rows() == 0) {
+        echo json_encode(['error' => 'API key not found for the user.']);
+        return;
+    }
+    $result = $Api_query->row_array();
+    $api_key = $result['api_key'];
+
+    // Get the message from the POST data
+    $message = $this->input->post('message');
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Handle file upload and sending message with file ID
+        if (isset($_FILES['file'])) {
+            $file = $_FILES['file'];
+
+            if ($file['error'] === UPLOAD_ERR_OK) {
+                // Step 1: Upload the file and get the ID
+                $uploadUrl = 'https://waba-v2.360dialog.io/media';
+                $cfile = new CURLFile($file['tmp_name'], $file['type'], $file['name']);
+                $data = ['file' => $cfile, 'messaging_product' => 'whatsapp'];
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $uploadUrl);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ['D360-API-KEY: ' . $api_key]);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+                $response = curl_exec($ch);
+                if ($response === false) {
+                    $error = curl_error($ch);
+                    curl_close($ch);
+                    http_response_code(500);
+                    echo json_encode(['error' => $error]);
+                    return;
+                }
+                curl_close($ch);
+                $responseData = json_decode($response, true);
+                if (json_last_error() !== JSON_ERROR_NONE || !isset($responseData['id'])) {
+                    http_response_code(500);
+                    echo json_encode(['error' => 'Invalid response from API', 'response' => $response]);
+                    return;
+                }
+                $fileId = $responseData['id'];
+
+                // Step 2: Send the message using the file ID
+                $sendMessageUrl = 'https://waba-sandbox.360dialog.io/v1/messages';
+                $recipientNumber = '923235259115'; // Replace with the actual recipient number
+                $sendMessageData = [
+                    'recipient_type' => 'individual',
+                    'to' => $recipientNumber,
+                    'type' => 'image',
+                    'image' => [
+                        'id' => $fileId
+                    ],
+                    'messaging_product' => 'whatsapp'
+                ];
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $sendMessageUrl);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                    'D360-API-KEY: ' . $api_key,
+                    'Content-Type: application/json'
+                ]);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($sendMessageData));
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+                $sendMessageResponse = curl_exec($ch);
+                if ($sendMessageResponse === false) {
+                    $error = curl_error($ch);
+                    curl_close($ch);
+                    http_response_code(500);
+                    echo json_encode(['error' => $error]);
+                    return;
+                }
+                curl_close($ch);
+                $sendMessageData = json_decode($sendMessageResponse, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    http_response_code(500);
+                    echo json_encode(['error' => 'Invalid response from API', 'response' => $sendMessageResponse]);
+                    return;
+                }
+
+                echo json_encode(['file_id' => $fileId, 'send_message_response' => $sendMessageData]);
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'File upload error', 'file_error' => $file['error']]);
+            }
+        } else {
+            // Send text message only
+            if (!empty($api_key)) {
+                $payload = json_encode([
+                    "messaging_product" => "whatsapp",
+                    "recipient_type" => "individual",
+                    "to" => "923235259115",
+                    "type" => "text",
+                    "text" => [
+                        "body" => $message
+                    ]
+                ]);
+
+                // WhatsApp API URL
+                $url = "https://waba-sandbox.360dialog.io/v1/messages";
+
+                // Initialize cURL
+                $ch = curl_init($url);
+
+                // Set cURL options
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $headers = [
+                    'Content-Type: application/json',
+                    'D360-Api-Key: ' . $api_key
+                ];
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+                // Execute cURL request
+                $response = curl_exec($ch);
+                $error = curl_error($ch);
+
+                // Close cURL
+                curl_close($ch);
+
+                // Handle errors
+                if ($error) {
+                    echo json_encode(['error' => 'Error sending message: ' . $error]);
+                    return;
+                }
+
+                // Decode the response
+                $decoded_response = json_decode($response);
+
+                // Check for API errors
+                if (isset($decoded_response->error)) {
+                    echo json_encode(['error' => 'API Error: ' . $decoded_response->error->message]);
+                    return;
+                }
+
+                // Process the successful response
+                $conn = new mysqli("localhost", "waba_birdchat_io", "Cims@182020", "waba_birdchat_io");
+                if ($conn->connect_error) {
+                    echo json_encode(['error' => 'Database connection failed: ' . $conn->connect_error]);
+                    return;
+                }
+
+                // Extract data from the response
+                $data = json_decode($response, true);
+                $contacts = $data['contacts'];
+                $messages = $data['messages'];
+
+                // Initialize variables
+                $message_id = null;
+                $contact_input = null;
+                $contact_id = null;
+
+                // Loop through messages
+                foreach ($messages as $message) {
+                    $message_id = $message['id'];
+                }
+
+                // Loop through contacts
+                foreach ($contacts as $contact) {
+                    $contact_input = $contact['input'];
+                    $contact_id = $contact['wa_id'];
+                }
+
+                // Prepare data for database insertion
+                $insert_data = [
+                    'message_id' => $message_id,
+                    'input_id' => $contact_input,
+                    'wa_id' => $contact_id,
+                    'recipient' => "923235259115",
+                    'message_body' => $message,
+                    'timestamp' => date('Y-m-d H:i:s')
+                ];
+
+                // Insert data into the database
+                $inserted = $this->db->insert('whatsapp_messages', $insert_data);
+                if ($inserted) {
+                    $options = [
+                        'cluster' => 'ap2',
+                        'useTLS' => true
+                    ];
+                    $pusher = new Pusher\Pusher(
+                        'ae65b6841edff9407432',
+                        'c67a5cb18b2831e69b72',
+                        '1799640',
+                        $options
+                    );
+
+                    // Trigger a Pusher event
+                    $pusher->trigger('my-channel', 'message-sent', ['message' => 'New message sent']);
+                    $this->load->helper('url');
+
+                    // Redirect to the specified URL
+                    redirect(base_url('social_accounts/inbox'));
+                } else {
+                    echo json_encode(['error' => 'Failed to insert message into database']);
+                }
+            } else {
+                $this->session->set_flashdata('error_message', 'API Key is Not Generated');
+                redirect('social_accounts/inbox');
+                exit;
+            }
+        }
+    } else {
+        http_response_code(400);
+        echo json_encode(['error' => 'Invalid request']);
+    }
 }
-}
 
-
+    
 
 }
