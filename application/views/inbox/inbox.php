@@ -971,82 +971,57 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body" style="height:100vh;">
                                         <!-- chat-list -->
 
+                                        <!-- this commentout -->
                                         <div class="chat-lists">
                                             <div class="tab-content" id="myTabContent">
                                                 <div class="tab-pane fade show active" id="Open" role="tabpanel" aria-labelledby="Open-tab">
+                                                    <?php
+                                                    // $query = $this->db->query("SELECT message_from FROM 360_dialog_contacts");
+                                                    $query = $this->db->query("SELECT message_from FROM 360_dialog_contacts ORDER BY id DESC");
 
-                                                    <div class="chat-list">
-                                                        <a href="#" class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0">
-                                                                <img src="<?php echo base_url('assets/images/img/Avatar.png'); ?>" class="img-fluid">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
+                                                    // Fetch all rows
+                                                    $results = $query->result_array(); // Use result_array() to get an array of all rows
+
+                                                    if (!empty($results)) {
+                                                        foreach ($results as $result) {
+                                                    ?>
+                                                            <div class="chat-list">
+                                                                <a href="#" class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="<?php echo base_url('assets/images/img/Avatar.png'); ?>" class="img-fluid">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-3">
+                                                                        <?php
+                                                                        $message_from = isset($result['message_from']) ? $result['message_from'] : 'No data';
+                                                                        ?>
+                                                                        <h1 style="font-size: 14px !important;"><?php echo $message_from; ?></h1>
+                                                                    </div>
+                                                                </a>
                                                                 <?php
-                                                                $query = $this->db->query("SELECT recipient FROM whatsapp_messages LIMIT 1");
-                                                                $result = $query->row_array();
-
-                                                                // Check if $result['recipient'] exists and is not null
-                                                                $columnData = isset($result['recipient']) ? $result['recipient'] : null;
+                                                                // Fetch the most recent message body
+                                                                $message_query = $this->db->query("SELECT message_body FROM whatsapp_messages WHERE message_body IS NOT NULL ORDER BY timestamp DESC");
+                                                                $message_result = $message_query->row_array();
+                                                                $message_body = $message_result['message_body'] ?? null;
                                                                 ?>
-                                                                <h3 style="font-size: 14px !important;"><?php echo $columnData; ?></h3>
-
-                                                                <?php
-                                                                $query = $this->db->query("SELECT timestamp FROM whatsapp_messages ORDER BY timestamp DESC LIMIT 1");
-                                                                $result = $query->row_array();
-
-                                                                // Check if $result['timestamp'] exists and is not null
-
-
-                                                                if (isset($result['timestamp'])) {
-                                                                    $timestamp = strtotime($result['timestamp']);
-                                                                    $current_time = time();
-                                                                    $difference = $current_time - $timestamp;
-
-                                                                    // After 60 seconds, display the number of minutes
-                                                                    if ($difference >= 60) {
-                                                                        $minutes = floor($difference / 60);
-                                                                        if ($minutes >= 60) {
-                                                                            // After 60 minutes, display the number of hours
-                                                                            $hours = floor($minutes / 60);
-                                                                            echo "<p style=\"font-size: 12px !important;color: #475467 !important;\">";
-                                                                            echo isset($hours) ? $hours . ' hours ago' : '';
-                                                                            echo "</p>";
-                                                                        } else {
-                                                                            echo "<p style=\"font-size: 12px !important;color: #475467 !important;\">";
-                                                                            echo isset($minutes) ? $minutes . ' minutes ago' : '';
-                                                                            echo "</p>";
-                                                                        }
-                                                                    } else {
-                                                                        $minutes = null;
-                                                                    }
-                                                                }
-                                                                ?>
-
-
-
-
+                                                                <!-- <! -- <p style="color: #475467 !important;"></p> --> 
                                                             </div>
-                                                        </a>
-                                                        <?php
-                                                        $query = $this->db->query("SELECT message_body FROM whatsapp_messages WHERE message_body IS NOT NULL ORDER BY timestamp DESC");
-                                                        $result = $query->row_array();
-                                                        $columnData = $result['message_body'] ?? null;
-                                                        ?>
-                                                        <p style="color: #475467 !important;"><?php echo $columnData; ?></p>
-                                                    </div>
-
+                                                    <?php
+                                                        }
+                                                    }
+                                                    ?>
                                                 </div>
                                                 <div class="tab-pane fade" id="Closed" role="tabpanel" aria-labelledby="Closed-tab">
-
+                                                    <!-- Content for the Closed tab -->
                                                 </div>
                                                 <div class="tab-pane fade" id="mention" role="tabpanel" aria-labelledby="Closed-tab">
-
+                                                    <!-- Content for the Mention tab -->
                                                 </div>
                                             </div>
                                         </div>
+
                                         <!-- chat-list -->
                                     </div>
                                 </div>
@@ -1063,11 +1038,13 @@
                                             <div class="d-flex" style="flex-direction: row;justify-content: space-between;">
                                                 <div class="container2" style=" padding-left: 43px;">
                                                     <?php
-                                                    $query = $this->db->query("SELECT recipient FROM whatsapp_messages LIMIT 1");
-                                                    $result = $query->row_array();
+                                                $query = $this->db->query("SELECT message_from FROM whatsapp_messages ORDER BY `timestamp` DESC");
+
+
+                                                $result = $query->row_array();
 
                                                     // Check if $result['recipient'] exists and is not null
-                                                    $columnData = isset($result['recipient']) ? $result['recipient'] : null;
+                                                    $columnData = isset($result['message_from']) ? $result['message_from'] : null;
                                                     ?>
                                                     <h1><?php echo $columnData; ?></h1>
 
@@ -1111,12 +1088,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body" style="height: 100vh;">
                                         <div class="msg-body">
                                             <!-- Your message body content -->
                                             <?php if (!empty($messages)) : ?>
+                                                
                                                 <ul>
-                                                    <?php foreach ($messages->result() as $message) : ?>
+                                                    <?php foreach ($messages as $message) : ?>
                                                         <?php if (!empty($message->message_body)) : ?>
                                                             <?php if (is_null($message->entry_id)) : ?>
                                                                 <li class="repaly">
@@ -1138,11 +1116,7 @@
                                                             <?php endif; ?>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
-
-
                                                 </ul>
-
-
                                             <?php endif; ?>
                                         </div>
                                         <ul id="message-list" class="sender">
@@ -1160,7 +1134,7 @@
                                                     <svg style="height: 20px; color: black;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
                                                     </svg>
-                                                    <input type="file" id="doc" name="file" style="display: none;" accept=".pdf,.txt">
+                                                    <input type="file" id="doc" name="file" style="display: none;" accept=".pdf,.txt,.jpeg,.jpg,.png">
                                                 </label>
                                             </div>
                                         </form>
